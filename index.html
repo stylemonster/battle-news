@@ -3,49 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>战场新闻资讯中心 | Battle News</title>
+    <title>全球战场新闻资讯 | Global Battle News</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a1a; color: #eee; line-height: 1.6; }
-        header { background: #000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: #e63946; }
+        header { background: linear-gradient(90deg, #000 0%, #222 100%); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e63946; }
+        .logo { font-size: 1.8rem; font-weight: 900; color: #e63946; letter-spacing: 2px; }
+        .logo span { color: #fff; }
+        .disclaimer { font-size: 0.75rem; color: #888; }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .section { margin-bottom: 2rem; }
-        .section h2 { border-bottom: 2px solid #e63946; padding-bottom: 0.5rem; margin-bottom: 1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
-        .card { background: #2a2a2a; border-radius: 8px; padding: 1.2rem; border-left: 3px solid #e63946; }
-        .card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .card .meta { font-size: 0.8rem; color: #888; margin-bottom: 0.5rem; }
-        .card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .card .tag { background: #e63946; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.7rem; }
-        .card .source { color: #e63946; font-weight: bold; }
-        .trending { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .trending-item { background: #2a2a2a; padding: 0.8rem 1.2rem; border-radius: 20px; }
-        .trending-item .count { color: #e63946; font-weight: bold; }
-        .stats { display: flex; gap: 2rem; margin-bottom: 2rem; }
-        .stat { text-align: center; }
+        .section { margin-bottom: 2.5rem; }
+        .section h2 { border-bottom: 2px solid #e63946; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.3rem; }
+        
+        /* 统计栏 */
+        .stats { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .stat { background: #2a2a2a; padding: 1rem 1.5rem; border-radius: 8px; text-align: center; }
         .stat .num { font-size: 2rem; font-weight: bold; color: #e63946; }
         .stat .label { font-size: 0.8rem; color: #888; }
-        footer { background: #000; text-align: center; padding: 2rem; color: #666; }
-        .update-time { text-align: right; color: #666; font-size: 0.8rem; }
+        
+        /* 热度趋势 */
+        .trending { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .trending-item { background: #2a2a2a; padding: 0.8rem 1.2rem; border-radius: 20px; display: flex; align-items: center; gap: 0.5rem; }
+        .trending-item .count { background: #e63946; color: #fff; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.8rem; }
+        
+        /* 卡片网格 */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
+        .card { background: #2a2a2a; border-radius: 8px; padding: 1.2rem; border-left: 3px solid #e63946; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); }
+        .card h3 { font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.4; }
+        .card .meta { font-size: 0.8rem; color: #888; margin-bottom: 0.5rem; }
+        .card .source { color: #e63946; font-weight: bold; }
+        .card .summary { color: #aaa; font-size: 0.9rem; margin-bottom: 0.8rem; }
+        .card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .card .tag { background: #444; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.7rem; }
+        
+        /* 原文链接 */
+        .original-link { float: right; color: #e63946; text-decoration: none; font-size: 0.75rem; }
+        .original-link:hover { text-decoration: underline; }
+        
+        /* 底部 */
+        footer { background: #000; text-align: center; padding: 2rem; color: #666; margin-top: 2rem; }
+        footer .disclaimer { font-size: 0.8rem; margin-top: 0.5rem; }
+        .update-time { text-align: right; color: #666; font-size: 0.8rem; margin-top: 1rem; }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .stats { justify-content: center; }
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">⚔️ 战场新闻资讯中心</div>
-        <div>最后更新: 2026-03-16 17:56:06</div>
+        <div class="logo">⚔️ <span>全球战场新闻</span>资讯</div>
+        <div class="disclaimer">信息仅供参考，版权归原作者所有</div>
     </header>
     
     <div class="container">
         <!-- 统计 -->
         <div class="stats">
             <div class="stat">
-                <div class="num">4</div>
+                <div class="num">6</div>
                 <div class="label">新闻总数</div>
             </div>
             <div class="stat">
                 <div class="num">7</div>
                 <div class="label">涉及战区</div>
+            </div>
+            <div class="stat">
+                <div class="num">4057</div>
+                <div class="label">总互动量</div>
             </div>
             <div class="stat">
                 <div class="num">US</div>
@@ -57,55 +84,81 @@
         <div class="section">
             <h2>📈 热度趋势</h2>
             <div class="trending">
-                
-                <div class="trending-item">
-                    <span class="count">3</span> US
-                </div>
-                <div class="trending-item">
-                    <span class="count">2</span> Ukraine
-                </div>
-                <div class="trending-item">
-                    <span class="count">2</span> Russia
-                </div>
-                <div class="trending-item">
-                    <span class="count">1</span> Israel
-                </div>
-                <div class="trending-item">
-                    <span class="count">1</span> Hamas
-                </div>
-            </div>
+        <div class="trending-item">
+            <span class="count">4</span> US
+        </div>
+        <div class="trending-item">
+            <span class="count">3</span> Russia
+        </div>
+        <div class="trending-item">
+            <span class="count">2</span> Ukraine
+        </div>
+        <div class="trending-item">
+            <span class="count">2</span> Israel
+        </div>
+        <div class="trending-item">
+            <span class="count">2</span> Hamas
+        </div></div>
         </div>
         
         <!-- 热门新闻 -->
         <div class="section">
             <h2>🔥 热门新闻</h2>
             <div class="grid">
-                
-                <div class="card">
-                    <div class="meta"><span class="source">Reuters</span> · 2026-03-16 17:14:20</div>
-                    <h3>乌克兰称俄罗斯军队推进 on eastern front</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.</p>
-                    <div class="tags"><span class="tag">Ukraine</span><span class="tag">Russia</span><span class="tag">US</span></div>
-                </div>
-                <div class="card">
-                    <div class="meta"><span class="source">BBC</span> · 2026-03-16 17:14:20</div>
-                    <h3>以色列 在加沙发动空袭 火箭弹袭击后</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The Israeli 军事 carried out 加沙空袭 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.</p>
-                    <div class="tags"><span class="tag">Israel</span><span class="tag">Hamas</span></div>
-                </div>
-                <div class="card">
-                    <div class="meta"><span class="source">CNN</span> · 2026-03-16 17:14:20</div>
-                    <h3>美国 就...警告伊朗 核计划 升级</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The United States has 警告 伊朗 against further 升级 of its 核计划, saying 所有选项都在考虑范围内.</p>
-                    <div class="tags"><span class="tag">Iran</span><span class="tag">US</span></div>
-                </div>
-                <div class="card">
-                    <div class="meta"><span class="source">Al Jazeera</span> · 2026-03-16 17:14:20</div>
-                    <h3>北约盟国讨论 增加支持 for 乌克兰</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.</p>
-                    <div class="tags"><span class="tag">Ukraine</span><span class="tag">Russia</span><span class="tag">US</span><span class="tag">Europe</span></div>
-                </div>
+        <div class="card">
+            <div class="meta">
+                <span class="source">Reuters</span> · 2026-03-16 17:14:20
+                <a href="https://www.reuters.com/world/europe/" target="_blank" class="original-link">原文→</a>
             </div>
+            <h3>乌克兰称俄罗斯军队在东部前线推进</h3>
+            <p class="summary">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut.</p>
+            <div class="tags"><span class="tag">Ukraine</span><span class="tag">Russia</span><span class="tag">US</span></div>
+        </div>
+        <div class="card">
+            <div class="meta">
+                <span class="source">BBC</span> · 2026-03-16 17:14:20
+                <a href="https://www.bbc.com/news/middle-east" target="_blank" class="original-link">原文→</a>
+            </div>
+            <h3>以色列 conducts strikes in 加沙 火箭弹袭击后</h3>
+            <p class="summary">The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.</p>
+            <div class="tags"><span class="tag">Israel</span><span class="tag">Hamas</span></div>
+        </div>
+        <div class="card">
+            <div class="meta">
+                <span class="source">CNN</span> · 2026-03-16 17:14:20
+                <a href="https://www.cnn.com/world" target="_blank" class="original-link">原文→</a>
+            </div>
+            <h3>美国就核计划警告伊朗 escalation</h3>
+            <p class="summary">The United States has warned 伊朗 against further escalation of its 核武器 program, saying 所有选项都在考虑范围内.</p>
+            <div class="tags"><span class="tag">Iran</span><span class="tag">US</span></div>
+        </div>
+        <div class="card">
+            <div class="meta">
+                <span class="source">Al Jazeera</span> · 2026-03-16 17:14:20
+                <a href="https://www.aljazeera.com/news" target="_blank" class="original-link">原文→</a>
+            </div>
+            <h3>北约盟国讨论增加支持 for 乌克兰</h3>
+            <p class="summary">北约 国防部长开会 to 讨论增加军事支持 for 乌克兰 在持续冲突中 with 俄罗斯.</p>
+            <div class="tags"><span class="tag">Ukraine</span><span class="tag">Russia</span><span class="tag">US</span><span class="tag">Europe</span></div>
+        </div>
+        <div class="card">
+            <div class="meta">
+                <span class="source">BBC</span> · 2026-03-16 18:36:12
+                <a href="https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/" target="_blank" class="original-link">原文→</a>
+            </div>
+            <h3>以色列 加沙火箭弹袭击后以军发动空袭</h3>
+            <p class="summary">The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子. 这次交火标志着又一次升级 in the 长期冲突.</p>
+            <div class="tags"><span class="tag">Israel</span><span class="tag">Hamas</span></div>
+        </div>
+        <div class="card">
+            <div class="meta">
+                <span class="source">Reuters</span> · 2026-03-16 18:36:12
+                <a href="https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/" target="_blank" class="original-link">原文→</a>
+            </div>
+            <h3>俄罗斯军方宣布新攻势 in 顿巴斯</h3>
+            <p class="summary">俄罗斯 军事官员 宣布 a new 攻势 operation in the 顿巴斯 region. 乌克兰军队正在准备 防御阵地.</p>
+            <div class="tags"><span class="tag">Russia</span><span class="tag">US</span></div>
+        </div></div>
         </div>
         
         <!-- 按战区分类 -->
@@ -115,14 +168,20 @@
             <div class="grid">
                 
                 <div class="card">
-                    <div class="meta">Reuters · 2026-03-16 17:14:20</div>
-                    <h3>乌克兰称俄罗斯军队推进 on eastern front</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.</p>
+                    <div class="meta">
+                        Reuters · 2026-03-16 17:14:20
+                        <a href="https://www.reuters.com/world/europe/" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>乌克兰称俄罗斯军队在东部前线推进</h3>
+                    <p class="summary">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut.</p>
                 </div>
                 <div class="card">
-                    <div class="meta">Al Jazeera · 2026-03-16 17:14:20</div>
-                    <h3>北约盟国讨论 增加支持 for 乌克兰</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.</p>
+                    <div class="meta">
+                        Al Jazeera · 2026-03-16 17:14:20
+                        <a href="https://www.aljazeera.com/news" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>北约盟国讨论增加支持 for 乌克兰</h3>
+                    <p class="summary">北约 国防部长开会 to 讨论增加军事支持 for 乌克兰 在持续冲突中 with 俄罗斯.</p>
                 </div>
             </div>
         </div>
@@ -131,14 +190,28 @@
             <div class="grid">
                 
                 <div class="card">
-                    <div class="meta">Reuters · 2026-03-16 17:14:20</div>
-                    <h3>乌克兰称俄罗斯军队推进 on eastern front</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.</p>
+                    <div class="meta">
+                        Reuters · 2026-03-16 17:14:20
+                        <a href="https://www.reuters.com/world/europe/" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>乌克兰称俄罗斯军队在东部前线推进</h3>
+                    <p class="summary">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut.</p>
                 </div>
                 <div class="card">
-                    <div class="meta">Al Jazeera · 2026-03-16 17:14:20</div>
-                    <h3>北约盟国讨论 增加支持 for 乌克兰</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.</p>
+                    <div class="meta">
+                        Reuters · 2026-03-16 18:36:12
+                        <a href="https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>俄罗斯军方宣布新攻势 in 顿巴斯</h3>
+                    <p class="summary">俄罗斯 军事官员 宣布 a new 攻势 operation in the 顿巴斯 region. 乌克兰军队正在准备 防御阵地.</p>
+                </div>
+                <div class="card">
+                    <div class="meta">
+                        Al Jazeera · 2026-03-16 17:14:20
+                        <a href="https://www.aljazeera.com/news" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>北约盟国讨论增加支持 for 乌克兰</h3>
+                    <p class="summary">北约 国防部长开会 to 讨论增加军事支持 for 乌克兰 在持续冲突中 with 俄罗斯.</p>
                 </div>
             </div>
         </div>
@@ -147,19 +220,28 @@
             <div class="grid">
                 
                 <div class="card">
-                    <div class="meta">Reuters · 2026-03-16 17:14:20</div>
-                    <h3>乌克兰称俄罗斯军队推进 on eastern front</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.</p>
+                    <div class="meta">
+                        Reuters · 2026-03-16 17:14:20
+                        <a href="https://www.reuters.com/world/europe/" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>乌克兰称俄罗斯军队在东部前线推进</h3>
+                    <p class="summary">Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut.</p>
                 </div>
                 <div class="card">
-                    <div class="meta">CNN · 2026-03-16 17:14:20</div>
-                    <h3>美国 就...警告伊朗 核计划 升级</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The United States has 警告 伊朗 against further 升级 of its 核计划, saying 所有选项都在考虑范围内.</p>
+                    <div class="meta">
+                        Reuters · 2026-03-16 18:36:12
+                        <a href="https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>俄罗斯军方宣布新攻势 in 顿巴斯</h3>
+                    <p class="summary">俄罗斯 军事官员 宣布 a new 攻势 operation in the 顿巴斯 region. 乌克兰军队正在准备 防御阵地.</p>
                 </div>
                 <div class="card">
-                    <div class="meta">Al Jazeera · 2026-03-16 17:14:20</div>
-                    <h3>北约盟国讨论 增加支持 for 乌克兰</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.</p>
+                    <div class="meta">
+                        CNN · 2026-03-16 17:14:20
+                        <a href="https://www.cnn.com/world" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>美国就核计划警告伊朗 escalation</h3>
+                    <p class="summary">The United States has warned 伊朗 against further escalation of its 核武器 program, saying 所有选项都在考虑范围内.</p>
                 </div>
             </div>
         </div>
@@ -168,19 +250,67 @@
             <div class="grid">
                 
                 <div class="card">
-                    <div class="meta">BBC · 2026-03-16 17:14:20</div>
-                    <h3>以色列 在加沙发动空袭 火箭弹袭击后</h3>
-                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The Israeli 军事 carried out 加沙空袭 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.</p>
+                    <div class="meta">
+                        BBC · 2026-03-16 17:14:20
+                        <a href="https://www.bbc.com/news/middle-east" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>以色列 conducts strikes in 加沙 火箭弹袭击后</h3>
+                    <p class="summary">The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.</p>
+                </div>
+                <div class="card">
+                    <div class="meta">
+                        BBC · 2026-03-16 18:36:12
+                        <a href="https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>以色列 加沙火箭弹袭击后以军发动空袭</h3>
+                    <p class="summary">The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子. 这次交火标志着又一次升级 in the 长期冲突.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>⚔️ Hamas 战区</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="meta">
+                        BBC · 2026-03-16 17:14:20
+                        <a href="https://www.bbc.com/news/middle-east" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>以色列 conducts strikes in 加沙 火箭弹袭击后</h3>
+                    <p class="summary">The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.</p>
+                </div>
+                <div class="card">
+                    <div class="meta">
+                        BBC · 2026-03-16 18:36:12
+                        <a href="https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>以色列 加沙火箭弹袭击后以军发动空袭</h3>
+                    <p class="summary">The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子. 这次交火标志着又一次升级 in the 长期冲突.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>⚔️ Iran 战区</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="meta">
+                        CNN · 2026-03-16 17:14:20
+                        <a href="https://www.cnn.com/world" target="_blank" class="original-link">原文→</a>
+                    </div>
+                    <h3>美国就核计划警告伊朗 escalation</h3>
+                    <p class="summary">The United States has warned 伊朗 against further escalation of its 核武器 program, saying 所有选项都在考虑范围内.</p>
                 </div>
             </div>
         </div>
         
-        <p class="update-time">🔄 最后更新: 2026-03-16 17:56:06</p>
+        <p class="update-time">🔄 最后更新: 2026-03-16 18:36:12</p>
     </div>
     
     <footer>
-        <p>战场新闻资讯中心 | 仅供参改</p>
-        <p>© 2026 All Rights Reserved</p>
+        <p>全球战场新闻资讯中心</p>
+        <p class="disclaimer">⚠️ 本网站信息仅供参考，不构成任何投资或决策建议</p>
+        <p class="disclaimer">© 2026 All Rights Reserved | 信息来源: Reuters, BBC, CNN, Al Jazeera</p>
     </footer>
 </body>
 </html>

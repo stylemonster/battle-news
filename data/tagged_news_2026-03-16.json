@@ -8,14 +8,15 @@
     "likes": 312,
     "shares": 190,
     "comments": 76,
-    "title_zh": "乌克兰称俄罗斯军队推进 on eastern front",
-    "summary_zh": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.",
+    "title_zh": "乌克兰称俄罗斯军队在东部前线推进",
+    "summary_zh": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut.",
     "cleaned": true,
     "tags": [
       "Ukraine",
       "Russia",
       "US"
-    ]
+    ],
+    "original_link": "https://www.reuters.com/world/europe/"
   },
   {
     "title": "Israel conducts strikes in Gaza after rocket fire",
@@ -26,13 +27,14 @@
     "likes": 488,
     "shares": 267,
     "comments": 67,
-    "title_zh": "以色列 在加沙发动空袭 火箭弹袭击后",
-    "summary_zh": "The Israeli 军事 carried out 加沙空袭 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.",
+    "title_zh": "以色列 conducts strikes in 加沙 火箭弹袭击后",
+    "summary_zh": "The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.",
     "cleaned": true,
     "tags": [
       "Israel",
       "Hamas"
-    ]
+    ],
+    "original_link": "https://www.bbc.com/news/middle-east"
   },
   {
     "title": "US warns Iran over nuclear program escalation",
@@ -43,13 +45,14 @@
     "likes": 370,
     "shares": 81,
     "comments": 30,
-    "title_zh": "美国 就...警告伊朗 核计划 升级",
-    "summary_zh": "The United States has 警告 伊朗 against further 升级 of its 核计划, saying 所有选项都在考虑范围内.",
+    "title_zh": "美国就核计划警告伊朗 escalation",
+    "summary_zh": "The United States has warned 伊朗 against further escalation of its 核武器 program, saying 所有选项都在考虑范围内.",
     "cleaned": true,
     "tags": [
       "Iran",
       "US"
-    ]
+    ],
+    "original_link": "https://www.cnn.com/world"
   },
   {
     "title": "NATO allies discuss increased support for Ukraine",
@@ -60,14 +63,51 @@
     "likes": 129,
     "shares": 30,
     "comments": 73,
-    "title_zh": "北约盟国讨论 增加支持 for 乌克兰",
-    "summary_zh": "北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.",
+    "title_zh": "北约盟国讨论增加支持 for 乌克兰",
+    "summary_zh": "北约 国防部长开会 to 讨论增加军事支持 for 乌克兰 在持续冲突中 with 俄罗斯.",
     "cleaned": true,
     "tags": [
       "Ukraine",
       "Russia",
       "US",
       "Europe"
-    ]
+    ],
+    "original_link": "https://www.aljazeera.com/news"
+  },
+  {
+    "title": "Israel conducts airstrikes in Gaza after rocket fire",
+    "summary": "The Israeli military carried out airstrikes in Gaza overnight following rocket attacks from Palestinian militants. The exchange marks another escalation in the long-standing conflict.",
+    "link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/",
+    "timestamp": "2026-03-16 18:36:12",
+    "source": "BBC",
+    "likes": 365,
+    "shares": 189,
+    "comments": 36,
+    "title_zh": "以色列 加沙火箭弹袭击后以军发动空袭",
+    "summary_zh": "The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子. 这次交火标志着又一次升级 in the 长期冲突.",
+    "cleaned": true,
+    "tags": [
+      "Israel",
+      "Hamas"
+    ],
+    "original_link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/"
+  },
+  {
+    "title": "Russian military announces new offensive in Donbas",
+    "summary": "Russian military officials announced a new offensive operation in the Donbas region. Ukrainian forces are preparing defensive positions.",
+    "link": "https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/",
+    "timestamp": "2026-03-16 18:36:12",
+    "source": "Reuters",
+    "likes": 280,
+    "shares": 158,
+    "comments": 1,
+    "title_zh": "俄罗斯军方宣布新攻势 in 顿巴斯",
+    "summary_zh": "俄罗斯 军事官员 宣布 a new 攻势 operation in the 顿巴斯 region. 乌克兰军队正在准备 防御阵地.",
+    "cleaned": true,
+    "tags": [
+      "Russia",
+      "US"
+    ],
+    "original_link": "https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/"
   }
 ]

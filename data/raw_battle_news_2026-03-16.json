@@ -38,5 +38,25 @@
     "likes": 129,
     "shares": 30,
     "comments": 73
+  },
+  {
+    "title": "Israel conducts airstrikes in Gaza after rocket fire",
+    "summary": "The Israeli military carried out airstrikes in Gaza overnight following rocket attacks from Palestinian militants. The exchange marks another escalation in the long-standing conflict.",
+    "link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/",
+    "timestamp": "2026-03-16 18:36:12",
+    "source": "BBC",
+    "likes": 365,
+    "shares": 189,
+    "comments": 36
+  },
+  {
+    "title": "Russian military announces new offensive in Donbas",
+    "summary": "Russian military officials announced a new offensive operation in the Donbas region. Ukrainian forces are preparing defensive positions.",
+    "link": "https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/",
+    "timestamp": "2026-03-16 18:36:12",
+    "source": "Reuters",
+    "likes": 280,
+    "shares": 158,
+    "comments": 1
   }
 ]
