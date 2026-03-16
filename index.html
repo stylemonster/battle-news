@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战场新闻资讯中心 | Battle News</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a1a; color: #eee; line-height: 1.6; }
+        header { background: #000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #e63946; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .section { margin-bottom: 2rem; }
+        .section h2 { border-bottom: 2px solid #e63946; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
+        .card { background: #2a2a2a; border-radius: 8px; padding: 1.2rem; border-left: 3px solid #e63946; }
+        .card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .card .meta { font-size: 0.8rem; color: #888; margin-bottom: 0.5rem; }
+        .card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .card .tag { background: #e63946; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.7rem; }
+        .card .source { color: #e63946; font-weight: bold; }
+        .trending { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .trending-item { background: #2a2a2a; padding: 0.8rem 1.2rem; border-radius: 20px; }
+        .trending-item .count { color: #e63946; font-weight: bold; }
+        .stats { display: flex; gap: 2rem; margin-bottom: 2rem; }
+        .stat { text-align: center; }
+        .stat .num { font-size: 2rem; font-weight: bold; color: #e63946; }
+        .stat .label { font-size: 0.8rem; color: #888; }
+        footer { background: #000; text-align: center; padding: 2rem; color: #666; }
+        .update-time { text-align: right; color: #666; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">⚔️ 战场新闻资讯中心</div>
+        <div>最后更新: 2026-03-16 17:14:20</div>
+    </header>
+    
+    <div class="container">
+        <!-- 统计 -->
+        <div class="stats">
+            <div class="stat">
+                <div class="num">4</div>
+                <div class="label">新闻总数</div>
+            </div>
+            <div class="stat">
+                <div class="num">7</div>
+                <div class="label">涉及战区</div>
+            </div>
+            <div class="stat">
+                <div class="num">US</div>
+                <div class="label">最热战区</div>
+            </div>
+        </div>
+        
+        <!-- 热度趋势 -->
+        <div class="section">
+            <h2>📈 热度趋势</h2>
+            <div class="trending">
+                
+                <div class="trending-item">
+                    <span class="count">3</span> US
+                </div>
+                <div class="trending-item">
+                    <span class="count">2</span> Ukraine
+                </div>
+                <div class="trending-item">
+                    <span class="count">2</span> Russia
+                </div>
+                <div class="trending-item">
+                    <span class="count">1</span> Israel
+                </div>
+                <div class="trending-item">
+                    <span class="count">1</span> Hamas
+                </div>
+            </div>
+        </div>
+        
+        <!-- 热门新闻 -->
+        <div class="section">
+            <h2>🔥 热门新闻</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="meta"><span class="source">Reuters</span> · 2026-03-16 17:14:20</div>
+                    <h3>Ukraine says Russian forces advance on eastern front</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.</p>
+                    <div class="tags"><span class="tag">Ukraine</span><span class="tag">Russia</span><span class="tag">US</span></div>
+                </div>
+                <div class="card">
+                    <div class="meta"><span class="source">BBC</span> · 2026-03-16 17:14:20</div>
+                    <h3>Israel conducts strikes in Gaza after rocket fire</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The 以色列i 军事 carried out airstrikes in 加沙 overnight following rocket attacks from Palestinian militants.</p>
+                    <div class="tags"><span class="tag">Israel</span><span class="tag">Hamas</span></div>
+                </div>
+                <div class="card">
+                    <div class="meta"><span class="source">CNN</span> · 2026-03-16 17:14:20</div>
+                    <h3>US warns Iran over nuclear program escalation</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The United States has 战争ned 伊朗 against further escalation of its nuclear program, saying all options remain on the table.</p>
+                    <div class="tags"><span class="tag">Iran</span><span class="tag">US</span></div>
+                </div>
+                <div class="card">
+                    <div class="meta"><span class="source">Al Jazeera</span> · 2026-03-16 17:14:20</div>
+                    <h3>NATO allies discuss increased support for Ukraine</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.</p>
+                    <div class="tags"><span class="tag">Ukraine</span><span class="tag">Russia</span><span class="tag">US</span><span class="tag">Europe</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 按战区分类 -->
+        
+        <div class="section">
+            <h2>⚔️ Ukraine 战区</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="meta">Reuters · 2026-03-16 17:14:20</div>
+                    <h3>Ukraine says Russian forces advance on eastern front</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.</p>
+                </div>
+                <div class="card">
+                    <div class="meta">Al Jazeera · 2026-03-16 17:14:20</div>
+                    <h3>NATO allies discuss increased support for Ukraine</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>⚔️ Russia 战区</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="meta">Reuters · 2026-03-16 17:14:20</div>
+                    <h3>Ukraine says Russian forces advance on eastern front</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.</p>
+                </div>
+                <div class="card">
+                    <div class="meta">Al Jazeera · 2026-03-16 17:14:20</div>
+                    <h3>NATO allies discuss increased support for Ukraine</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>⚔️ US 战区</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="meta">Reuters · 2026-03-16 17:14:20</div>
+                    <h3>Ukraine says Russian forces advance on eastern front</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.</p>
+                </div>
+                <div class="card">
+                    <div class="meta">CNN · 2026-03-16 17:14:20</div>
+                    <h3>US warns Iran over nuclear program escalation</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The United States has 战争ned 伊朗 against further escalation of its nuclear program, saying all options remain on the table.</p>
+                </div>
+                <div class="card">
+                    <div class="meta">Al Jazeera · 2026-03-16 17:14:20</div>
+                    <h3>NATO allies discuss increased support for Ukraine</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>⚔️ Israel 战区</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="meta">BBC · 2026-03-16 17:14:20</div>
+                    <h3>Israel conducts strikes in Gaza after rocket fire</h3>
+                    <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">The 以色列i 军事 carried out airstrikes in 加沙 overnight following rocket attacks from Palestinian militants.</p>
+                </div>
+            </div>
+        </div>
+        
+        <p class="update-time">🔄 最后更新: 2026-03-16 17:14:20</p>
+    </div>
+    
+    <footer>
+        <p>战场新闻资讯中心 | 仅供参改</p>
+        <p>© 2026 All Rights Reserved</p>
+    </footer>
+</body>
+</html>

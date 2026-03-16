@@ -1,0 +1,93 @@
+{
+  "Ukraine": [
+    {
+      "title": "Ukraine says Russian forces advance on eastern front",
+      "summary": "Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+      "source": "Reuters",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 692
+    },
+    {
+      "title": "NATO allies discuss increased support for Ukraine",
+      "summary": "北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 189
+    }
+  ],
+  "Russia": [
+    {
+      "title": "Ukraine says Russian forces advance on eastern front",
+      "summary": "Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+      "source": "Reuters",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 692
+    },
+    {
+      "title": "NATO allies discuss increased support for Ukraine",
+      "summary": "北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 189
+    }
+  ],
+  "US": [
+    {
+      "title": "Ukraine says Russian forces advance on eastern front",
+      "summary": "Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+      "source": "Reuters",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 692
+    },
+    {
+      "title": "US warns Iran over nuclear program escalation",
+      "summary": "The United States has 战争ned 伊朗 against further escalation of its nuclear program, saying all options remain on the table.",
+      "source": "CNN",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 532
+    },
+    {
+      "title": "NATO allies discuss increased support for Ukraine",
+      "summary": "北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 189
+    }
+  ],
+  "Israel": [
+    {
+      "title": "Israel conducts strikes in Gaza after rocket fire",
+      "summary": "The 以色列i 军事 carried out airstrikes in 加沙 overnight following rocket attacks from Palestinian militants.",
+      "source": "BBC",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 1022
+    }
+  ],
+  "Hamas": [
+    {
+      "title": "Israel conducts strikes in Gaza after rocket fire",
+      "summary": "The 以色列i 军事 carried out airstrikes in 加沙 overnight following rocket attacks from Palestinian militants.",
+      "source": "BBC",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 1022
+    }
+  ],
+  "Iran": [
+    {
+      "title": "US warns Iran over nuclear program escalation",
+      "summary": "The United States has 战争ned 伊朗 against further escalation of its nuclear program, saying all options remain on the table.",
+      "source": "CNN",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 532
+    }
+  ],
+  "Europe": [
+    {
+      "title": "NATO allies discuss increased support for Ukraine",
+      "summary": "北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-03-16 17:14:20",
+      "engagement": 189
+    }
+  ]
+}

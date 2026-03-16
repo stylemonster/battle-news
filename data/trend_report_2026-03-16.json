@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-16",
+  "timestamp": "2026-03-16 17:14:20",
+  "total_news": 4,
+  "tag_counts": {
+    "Ukraine": 2,
+    "Russia": 2,
+    "US": 3,
+    "Israel": 1,
+    "Hamas": 1,
+    "Iran": 1,
+    "Europe": 1
+  },
+  "source_counts": {
+    "Reuters": 1,
+    "BBC": 1,
+    "CNN": 1,
+    "Al Jazeera": 1
+  },
+  "hot_tags": [
+    {
+      "tag": "US",
+      "count": 3
+    },
+    {
+      "tag": "Ukraine",
+      "count": 2
+    },
+    {
+      "tag": "Russia",
+      "count": 2
+    },
+    {
+      "tag": "Israel",
+      "count": 1
+    },
+    {
+      "tag": "Hamas",
+      "count": 1
+    }
+  ]
+}

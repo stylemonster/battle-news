@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Ukraine says Russian forces advance on eastern front",
+    "summary": "Ukrainian military officials reported continued Russian advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+    "link": "https://www.reuters.com/world/europe/",
+    "timestamp": "2026-03-16 17:14:20",
+    "source": "Reuters",
+    "likes": 312,
+    "shares": 190,
+    "comments": 76,
+    "summary_zh": "Ukrainian 军事 officials reported continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+    "cleaned": true
+  },
+  {
+    "title": "Israel conducts strikes in Gaza after rocket fire",
+    "summary": "The Israeli military carried out airstrikes in Gaza overnight following rocket attacks from Palestinian militants.",
+    "link": "https://www.bbc.com/news/middle-east",
+    "timestamp": "2026-03-16 17:14:20",
+    "source": "BBC",
+    "likes": 488,
+    "shares": 267,
+    "comments": 67,
+    "summary_zh": "The 以色列i 军事 carried out airstrikes in 加沙 overnight following rocket attacks from Palestinian militants.",
+    "cleaned": true
+  },
+  {
+    "title": "US warns Iran over nuclear program escalation",
+    "summary": "The United States has warned Iran against further escalation of its nuclear program, saying all options remain on the table.",
+    "link": "https://www.cnn.com/world",
+    "timestamp": "2026-03-16 17:14:20",
+    "source": "CNN",
+    "likes": 370,
+    "shares": 81,
+    "comments": 30,
+    "summary_zh": "The United States has 战争ned 伊朗 against further escalation of its nuclear program, saying all options remain on the table.",
+    "cleaned": true
+  },
+  {
+    "title": "NATO allies discuss increased support for Ukraine",
+    "summary": "NATO defense ministers met to discuss increasing military support for Ukraine amid ongoing conflict with Russia.",
+    "link": "https://www.aljazeera.com/news",
+    "timestamp": "2026-03-16 17:14:20",
+    "source": "Al Jazeera",
+    "likes": 129,
+    "shares": 30,
+    "comments": 73,
+    "summary_zh": "北约 defense ministers met to disc美国s increasing 军事 support for 乌克兰 amid ongoing 冲突 with R美国sia.",
+    "cleaned": true
+  }
+]
