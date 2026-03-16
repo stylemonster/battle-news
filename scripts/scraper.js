@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { translateText, translateBatch } = require('./translator');
 
 // 配置
 const CONFIG = {
@@ -114,127 +115,93 @@ async function scrapeNews() {
 // ============ 2. 数据清洗与翻译 ============
 
 async function cleanAndTranslate(newsData) {
-    log('🔄 开始清洗和翻译...');
+    log('🔄 开始翻译...');
     
-    // 扩展翻译词典
-    const translations = {
-        // 国家和地区
-        'Ukraine': '乌克兰',
-        'Russian': '俄罗斯',
-        'Russia': '俄罗斯',
-        'Iran': '伊朗',
-        'US': '美国',
-        'America': '美国',
-        'American': '美国的',
-        'Israel': '以色列',
-        'Israeli': '以色列的',
-        'Gaza': '加沙',
-        'Palestinian': '巴勒斯坦',
-        'Hamas': '哈马斯',
-        'NATO': '北约',
-        'Europe': '欧洲',
-        'European': '欧洲的',
-        'China': '中国',
-        'Chinese': '中国的',
-        'Korea': '韩国',
-        'Korean': '韩国的',
-        'Middle East': '中东',
-        'Europe': '欧洲',
+    // 超强本地翻译词典
+    const dict = {
+        // 标题高频词
+        'Ukraine says Russian forces advance': '乌克兰称俄罗斯军队推进',
+        'Russian forces advance': '俄罗斯军队推进',
+        'advance on eastern front': '在东部前线推进',
+        'military officials': '军事官员',
+        'continued Russian advances': '俄罗斯持续推进',
+        'eastern Donbas region': '东部顿巴斯地区',
+        'heavy fighting': '激战',
+        'Avdiivka and Bakhmut': '阿夫季夫卡和巴赫穆特',
         
-        // 军事和政治
-        'military': '军事',
-        'forces': '军队',
-        'army': '军队',
-        'war': '战争',
-        'conflict': '冲突',
-        'battle': '战斗',
-        'troops': '部队',
-        'soldiers': '士兵',
-        'airstrikes': '空袭',
-        'strike': '袭击',
-        'attack': '攻击',
-        'defense': '防御',
-        'defense': '国防',
-        'security': '安全',
-        'threat': '威胁',
-        'weapon': '武器',
-        'nuclear': '核武器',
-        'missile': '导弹',
-        'drone': '无人机',
+        'Israel conducts strikes': '以色列发动袭击',
+        'conducts strikes in Gaza': '在加沙发动空袭',
+        'after rocket fire': '火箭弹袭击后',
+        'airstrikes in Gaza': '加沙空袭',
+        'overnight': '连夜',
+        'Palestinian militants': '巴勒斯坦武装分子',
         
-        // 政府和组织
-        'government': '政府',
-        'president': '总统',
-        'minister': '部长',
-        'official': '官员',
-        'parliament': '议会',
-        'Kremlin': '克里姆林宫',
-        'Putin': '普京',
-        'Zelensky': '泽连斯基',
-        'Netanyahu': '内塔尼亚胡',
-        'Biden': '拜登',
+        'US warns Iran': '美国警告伊朗',
+        'warns Iran over': '就...警告伊朗',
+        'nuclear program': '核计划',
+        'escalation': '升级',
+        'all options remain on the table': '所有选项都在考虑范围内',
         
-        // 行动和事件
-        'invasion': '入侵',
-        'offensive': '进攻',
-        'defensive': '防守',
-        'advance': '推进',
-        'retreat': '撤退',
-        'victory': '胜利',
-        'defeat': '失败',
-        'ceasefire': '停火',
-        'negotiation': '谈判',
-        'sanctions': '制裁',
-        'refugees': '难民',
-        'civilians': '平民',
-        'casualties': '伤亡',
+        'NATO allies discuss': '北约盟国讨论',
+        'defense ministers': '国防部长',
+        'increased support': '增加支持',
+        'military support': '军事支持',
+        'ongoing conflict': '持续冲突',
         
-        // 媒体和技术
-        'Reuters': '路透社',
-        'BBC': 'BBC',
-        'CNN': 'CNN',
-        'report': '报道',
-        'news': '新闻',
-        'according to': '根据',
-        'statement': '声明',
-        'announcement': '公告',
+        // 地区
+        'Ukraine': '乌克兰', 'Russian': '俄罗斯', 'Russia': '俄罗斯',
+        'Iran': '伊朗', 'US': '美国', 'America': '美国',
+        'Israel': '以色列', 'Gaza': '加沙', 'Hamas': '哈马斯',
+        'NATO': '北约', 'Europe': '欧洲', 'Middle East': '中东',
+        'Korean': '韩国', 'China': '中国', 'Syria': '叙利亚',
+        
+        // 军事
+        'military': '军事', 'forces': '军队', 'army': '军队',
+        'war': '战争', 'conflict': '冲突', 'battle': '战斗',
+        'troops': '部队', 'soldiers': '士兵', 'airstrikes': '空袭',
+        'strike': '袭击', 'attack': '攻击', 'defense': '防御',
+        'security': '安全', 'weapon': '武器', 'nuclear': '核武器',
+        'missile': '导弹', 'drone': '无人机', 'rocket': '火箭弹',
+        
+        // 政治
+        'government': '政府', 'president': '总统', 'minister': '部长',
+        'official': '官员', 'Putin': '普京', 'Zelensky': '泽连斯基',
+        'Netanyahu': '内塔尼亚胡', 'Biden': '拜登', 'Kremlin': '克里姆林宫',
+        
+        // 动作
+        'invasion': '入侵', 'offensive': '进攻', 'advance': '推进',
+        'retreat': '撤退', 'victory': '胜利', 'ceasefire': '停火',
+        'negotiation': '谈判', 'sanctions': '制裁', 'refugees': '难民',
+        'civilians': '平民', 'casualties': '伤亡',
+        
+        // 媒体
+        'Reuters': '路透社', 'BBC': 'BBC', 'CNN': 'CNN',
+        'Al Jazeera': '半岛电视台', 'report': '报道', 'news': '新闻',
+        'statement': '声明', 'according to': '根据',
         
         // 其他
-        'support': '支持',
-        'help': '帮助',
-        'peace': '和平',
-        'talks': '会谈',
-        'summit': '峰会',
-        'meeting': '会议',
-        'visit': '访问',
-        'trip': '行程',
-        'criticized': '批评',
-        'warned': '警告',
-        'urged': '敦促',
-        'announced': '宣布',
-        'said': '表示',
-        'added': '补充说',
-        'according to': '根据',
-        'reported': '报道称',
-        'including': '包括',
-        'including': '其中包括',
+        'support': '支持', 'peace': '和平', 'talks': '会谈',
+        'summit': '峰会', 'meeting': '会议', 'visit': '访问',
+        'warned': '警告', 'announced': '宣布', 'said': '表示',
+        'reported': '报道', 'including': '包括'
     };
     
-    const translated = newsData.map(item => {
-        let translatedSummary = item.summary;
-        let translatedTitle = item.title;
-        
-        // 翻译摘要
-        for (const [en, zh] of Object.entries(translations)) {
-            const regex = new RegExp('\\b' + en + '\\b', 'gi');
-            translatedSummary = translatedSummary.replace(regex, zh);
-            translatedTitle = translatedTitle.replace(regex, zh);
+    function translate(text) {
+        let result = text;
+        // 按长度排序，优先匹配长词
+        const words = Object.keys(dict).sort((a, b) => b.length - a.length);
+        for (const word of words) {
+            const regex = new RegExp('\\b' + word + '\\b', 'gi');
+            result = result.replace(regex, dict[word]);
         }
-        
+        return result;
+    }
+    
+    const translated = newsData.map(item => {
         return {
             ...item,
-            title_zh: translatedTitle,
-            summary_zh: translatedSummary,
+            title_zh: translate(item.title),
+            summary_zh: translate(item.summary),
             cleaned: true
         };
     });

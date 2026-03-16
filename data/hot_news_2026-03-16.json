@@ -1,15 +1,15 @@
 {
   "Ukraine": [
     {
-      "title": "乌克兰 says 俄罗斯 军队 推进 on eastern front",
-      "summary": "Ukrainian 军事 officials 报道称 continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+      "title": "乌克兰称俄罗斯军队推进 on eastern front",
+      "summary": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.",
       "source": "Reuters",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 692
     },
     {
-      "title": "北约 allies discuss increased 支持 for 乌克兰",
-      "summary": "北约 国防 ministers met to discuss increasing 军事 支持 for 乌克兰 amid ongoing 冲突 with 俄罗斯.",
+      "title": "北约盟国讨论 增加支持 for 乌克兰",
+      "summary": "北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.",
       "source": "Al Jazeera",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 189
@@ -17,15 +17,15 @@
   ],
   "Russia": [
     {
-      "title": "乌克兰 says 俄罗斯 军队 推进 on eastern front",
-      "summary": "Ukrainian 军事 officials 报道称 continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+      "title": "乌克兰称俄罗斯军队推进 on eastern front",
+      "summary": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.",
       "source": "Reuters",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 692
     },
     {
-      "title": "北约 allies discuss increased 支持 for 乌克兰",
-      "summary": "北约 国防 ministers met to discuss increasing 军事 支持 for 乌克兰 amid ongoing 冲突 with 俄罗斯.",
+      "title": "北约盟国讨论 增加支持 for 乌克兰",
+      "summary": "北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.",
       "source": "Al Jazeera",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 189
@@ -33,22 +33,22 @@
   ],
   "US": [
     {
-      "title": "乌克兰 says 俄罗斯 军队 推进 on eastern front",
-      "summary": "Ukrainian 军事 officials 报道称 continued 俄罗斯 advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut.",
+      "title": "乌克兰称俄罗斯军队推进 on eastern front",
+      "summary": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around 阿夫季夫卡和巴赫穆特.",
       "source": "Reuters",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 692
     },
     {
-      "title": "美国 warns 伊朗 over 核武器 program escalation",
-      "summary": "The United States has 警告 伊朗 against further escalation of its 核武器 program, saying all options remain on the table.",
+      "title": "美国 就...警告伊朗 核计划 升级",
+      "summary": "The United States has 警告 伊朗 against further 升级 of its 核计划, saying 所有选项都在考虑范围内.",
       "source": "CNN",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 532
     },
     {
-      "title": "北约 allies discuss increased 支持 for 乌克兰",
-      "summary": "北约 国防 ministers met to discuss increasing 军事 支持 for 乌克兰 amid ongoing 冲突 with 俄罗斯.",
+      "title": "北约盟国讨论 增加支持 for 乌克兰",
+      "summary": "北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.",
       "source": "Al Jazeera",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 189
@@ -56,8 +56,8 @@
   ],
   "Israel": [
     {
-      "title": "以色列 conducts strikes in 加沙 after rocket fire",
-      "summary": "The 以色列的 军事 carried out 空袭 in 加沙 overnight following rocket attacks from 巴勒斯坦 militants.",
+      "title": "以色列 在加沙发动空袭 火箭弹袭击后",
+      "summary": "The Israeli 军事 carried out 加沙空袭 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.",
       "source": "BBC",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 1022
@@ -65,8 +65,8 @@
   ],
   "Hamas": [
     {
-      "title": "以色列 conducts strikes in 加沙 after rocket fire",
-      "summary": "The 以色列的 军事 carried out 空袭 in 加沙 overnight following rocket attacks from 巴勒斯坦 militants.",
+      "title": "以色列 在加沙发动空袭 火箭弹袭击后",
+      "summary": "The Israeli 军事 carried out 加沙空袭 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子.",
       "source": "BBC",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 1022
@@ -74,8 +74,8 @@
   ],
   "Iran": [
     {
-      "title": "美国 warns 伊朗 over 核武器 program escalation",
-      "summary": "The United States has 警告 伊朗 against further escalation of its 核武器 program, saying all options remain on the table.",
+      "title": "美国 就...警告伊朗 核计划 升级",
+      "summary": "The United States has 警告 伊朗 against further 升级 of its 核计划, saying 所有选项都在考虑范围内.",
       "source": "CNN",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 532
@@ -83,8 +83,8 @@
   ],
   "Europe": [
     {
-      "title": "北约 allies discuss increased 支持 for 乌克兰",
-      "summary": "北约 国防 ministers met to discuss increasing 军事 支持 for 乌克兰 amid ongoing 冲突 with 俄罗斯.",
+      "title": "北约盟国讨论 增加支持 for 乌克兰",
+      "summary": "北约 国防部长 met to discuss increasing 军事支持 for 乌克兰 amid 持续冲突 with 俄罗斯.",
       "source": "Al Jazeera",
       "timestamp": "2026-03-16 17:14:20",
       "engagement": 189
