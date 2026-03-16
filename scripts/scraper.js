@@ -1,10 +1,13 @@
 /**
- * 战场新闻抓取系统 v2.0
+ * 战场新闻抓取系统 v3.0
  * 按用户定义的流程执行：抓取 → 清洗翻译 → 分类 → 热度统计 → 存档 → 网站
+ * 支持: 真实API抓取 | 战区地图 | 告警通知
  */
 
 const fs = require('fs');
 const path = require('path');
+const { scrapeRealNews } = require('./news_api');
+const { sendAlert } = require('./notifier');
 
 // 配置
 const CONFIG = {
@@ -317,11 +320,14 @@ async function analyzeTrends(newsData) {
 
 // ============ 4.1 实时告警 ============
 
-function checkAlerts(tagCounts) {
+// ============ 4.1 实时告警 ============
+
+async function checkAlerts(tagCounts) {
     for (const [tag, threshold] of Object.entries(CONFIG.ALERT_THRESHOLD)) {
         if ((tagCounts[tag] || 0) >= threshold) {
             log(`⚠️ 告警: ${tag} 新闻数量达到 ${tagCounts[tag]}，超过阈值 ${threshold}`);
-            // 可以在这里发送微信/邮件通知
+            // 发送微信/邮件通知
+            await sendAlert(tag, tagCounts[tag], threshold);
         }
     }
 }
