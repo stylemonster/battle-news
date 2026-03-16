@@ -329,7 +329,7 @@ async function generateHotNews(newsData) {
             item.tags.forEach(tag => {
                 if (!hotNews[tag]) hotNews[tag] = [];
                 hotNews[tag].push({
-                    title: item.title,
+                    title: item.title_zh || item.title,
                     summary: item.summary_zh || item.summary,
                     source: item.source,
                     timestamp: item.timestamp,
@@ -432,7 +432,7 @@ function generateWebsite(newsData, hotNews, trendReport) {
                 ${newsData.slice(0, 6).map(n => `
                 <div class="card">
                     <div class="meta"><span class="source">${n.source}</span> · ${n.timestamp}</div>
-                    <h3>${n.title}</h3>
+                    <h3>${n.title_zh || n.title}</h3>
                     <p style="color:#aaa;font-size:0.9rem;margin:0.5rem 0;">${n.summary_zh || n.summary}</p>
                     <div class="tags">${(n.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}</div>
                 </div>`).join('')}
