@@ -40,6 +40,18 @@ async function sendFeishuMessage(message) {
     });
 }
 
+// 发送微信消息 (占位符)
+async function sendWechatMessage(message) {
+    console.log('⚠️ 微信通知未配置，跳过');
+    return false;
+}
+
+// 发送邮件 (占位符)
+async function sendEmail(subject, message) {
+    console.log('⚠️ 邮件通知未配置，跳过');
+    return false;
+}
+
 // 发送告警
 async function sendAlert(tag, count, threshold) {
     const message = `⚠️ 战区新闻更新提醒\n\n${tag} 新闻数量达到 ${count}，超过阈值 ${threshold}！\n\n查看详情：https://stylemonster.github.io/battle-news/\n\n时间: ${new Date().toLocaleString()}`;
