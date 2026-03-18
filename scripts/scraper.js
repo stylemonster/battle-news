@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { scrapeRealNews } = require('./news_api');
 const { sendAlert } = require('./notifier');
+const { translate } = require('./translator');
 
 // 配置
 const CONFIG = {
@@ -140,87 +141,202 @@ async function scrapeNews() {
 async function cleanAndTranslate(newsData) {
     log('🔄 开始翻译...');
     
-    // 超强本地翻译词典
-    const dict = {
+    // 完整翻译词典 (按长度降序排列，先匹配长句)
+    const dict = [
         // 完整句子
-        'Ukraine says Russian forces advance on eastern front': '乌克兰称俄罗斯军队在东部前线推进',
-        'Russian forces advance': '俄罗斯军队推进',
-        'advance on eastern front': '在东部前线推进',
-        'military officials': '军事官员',
-        'continued Russian advances': '俄罗斯持续推进',
-        'eastern Donbas region': '东部顿巴斯地区',
-        'heavy fighting': '激战',
-        'The situation remains tense': '局势仍然紧张',
-        'both sides continue to deploy troops': '双方继续部署军队',
+        { en: 'Ukraine says Russian forces advance on eastern front', zh: '乌克兰称俄罗斯军队在东部前线推进' },
+        { en: 'Russian forces advance', zh: '俄罗斯军队推进' },
+        { en: 'military officials reported', zh: '军事官员报道' },
+        { en: 'continued Russian advances', zh: '俄罗斯持续推进' },
+        { en: 'eastern Donbas region', zh: '东部顿巴斯地区' },
+        { en: 'heavy fighting around', zh: '激战' },
+        { en: 'The situation remains tense', zh: '局势仍然紧张' },
+        { en: 'both sides continue to deploy troops', zh: '双方继续部署军队' },
         
-        'Israel conducts airstrikes in Gaza': '以色列在加沙发动空袭',
-        'conducts airstrikes in Gaza after rocket fire': '加沙火箭弹袭击后以军发动空袭',
-        'after rocket fire': '火箭弹袭击后',
-        'overnight': '连夜',
-        'Palestinian militants': '巴勒斯坦武装分子',
-        'The exchange marks another escalation': '这次交火标志着又一次升级',
-        'long-standing conflict': '长期冲突',
+        { en: 'Israel conducts airstrikes in Gaza', zh: '以色列在加沙发动空袭' },
+        { en: 'after rocket fire', zh: '火箭弹袭击后' },
+        { en: 'overnight', zh: '连夜' },
+        { en: 'Palestinian militants', zh: '巴勒斯坦武装分子' },
+        { en: 'The exchange marks another escalation', zh: '这次交火标志着又一次升级' },
+        { en: 'long-standing conflict', zh: '长期冲突' },
         
-        'US warns Iran over nuclear program': '美国就核计划警告伊朗',
-        'warns Iran over': '就...警告伊朗',
-        'nuclear program escalation': '核计划升级',
-        'all options remain on the table': '所有选项都在考虑范围内',
-        'International negotiations have reached': '国际谈判已达成',
-        'a critical point': '关键点',
+        { en: 'US warns Iran over nuclear program', zh: '美国就核计划警告伊朗' },
+        { en: 'all options remain on the table', zh: '所有选项都在考虑范围内' },
+        { en: 'International negotiations have reached', zh: '国际谈判已达成' },
+        { en: 'a critical point', zh: '关键点' },
         
-        'NATO allies discuss increased support': '北约盟国讨论增加支持',
-        'defense ministers met': '国防部长开会',
-        'discuss increasing military support': '讨论增加军事支持',
-        'amid ongoing conflict': '在持续冲突中',
-        'Several new aid packages were announced': '宣布了新的援助计划',
+        { en: 'NATO allies discuss increased support', zh: '北约盟国讨论增加支持' },
+        { en: 'defense ministers met', zh: '国防部长开会' },
+        { en: 'discuss increasing military support', zh: '讨论增加军事支持' },
+        { en: 'amid ongoing conflict', zh: '在持续冲突中' },
+        { en: 'Several new aid packages were announced', zh: '宣布了新的援助计划' },
         
-        'Russian military announces new offensive': '俄罗斯军方宣布新攻势',
-        'announces a new offensive operation': '宣布新的攻势行动',
-        'Ukrainian forces are preparing': '乌克兰军队正在准备',
-        'defensive positions': '防御阵地',
+        { en: 'Russian military announces new offensive', zh: '俄罗斯军方宣布新攻势' },
+        { en: 'announces a new offensive operation', zh: '宣布新的攻势行动' },
+        { en: 'Ukrainian forces are preparing', zh: '乌克兰军队正在准备' },
+        { en: 'defensive positions', zh: '防御阵地' },
         
-        // 地区
-        'Ukraine': '乌克兰', 'Russian': '俄罗斯', 'Russia': '俄罗斯',
-        'Iran': '伊朗', 'US': '美国', 'America': '美国',
-        'Israel': '以色列', 'Gaza': '加沙', 'Gaza strip': '加沙地带',
-        'Hamas': '哈马斯', 'NATO': '北约', 'Europe': '欧洲',
-        'Middle East': '中东', 'Donbas': '顿巴斯',
+        // 地名
+        { en: 'Ukraine', zh: '乌克兰' },
+        { en: 'Ukrainian', zh: '乌克兰' },
+        { en: 'Russian', zh: '俄罗斯' },
+        { en: 'Russia', zh: '俄罗斯' },
+        { en: 'Iran', zh: '伊朗' },
+        { en: 'Iranian', zh: '伊朗' },
+        { en: 'US', zh: '美国' },
+        { en: 'America', zh: '美国' },
+        { en: 'American', zh: '美国' },
+        { en: 'United States', zh: '美国' },
+        { en: 'Israel', zh: '以色列' },
+        { en: 'Israeli', zh: '以色列' },
+        { en: 'Gaza', zh: '加沙' },
+        { en: 'Gaza strip', zh: '加沙地带' },
+        { en: 'Palestinian', zh: '巴勒斯坦' },
+        { en: 'Hamas', zh: '哈马斯' },
+        { en: 'NATO', zh: '北约' },
+        { en: 'Europe', zh: '欧洲' },
+        { en: 'European', zh: '欧洲' },
+        { en: 'Middle East', zh: '中东' },
+        { en: 'Donbas', zh: '顿巴斯' },
+        { en: 'Avdiivka', zh: '阿夫季夫卡' },
+        { en: 'Bakhmut', zh: '巴赫穆特' },
+        { en: 'Tehran', zh: '德黑兰' },
+        { en: 'Kremlin', zh: '克里姆林宫' },
         
         // 军事
-        'military': '军事', 'forces': '军队', 'army': '军队',
-        'war': '战争', 'conflict': '冲突', 'battle': '战斗',
-        'troops': '部队', 'soldiers': '士兵', 'airstrikes': '空袭',
-        'strike': '袭击', 'attack': '攻击', 'offensive': '攻势',
-        'defensive': '防御', 'defense': '国防', 'security': '安全',
-        'weapon': '武器', 'nuclear': '核武器', 'missile': '导弹',
-        'drone': '无人机', 'rocket': '火箭弹',
+        { en: 'military', zh: '军事' },
+        { en: 'forces', zh: '军队' },
+        { en: 'army', zh: '军队' },
+        { en: 'war', zh: '战争' },
+        { en: 'conflict', zh: '冲突' },
+        { en: 'battle', zh: '战斗' },
+        { en: 'troops', zh: '部队' },
+        { en: 'soldiers', zh: '士兵' },
+        { en: 'airstrikes', zh: '空袭' },
+        { en: 'airstrike', zh: '空袭' },
+        { en: 'strike', zh: '袭击' },
+        { en: 'attack', zh: '攻击' },
+        { en: 'offensive', zh: '攻势' },
+        { en: 'operation', zh: '行动' },
+        { en: 'defensive', zh: '防御' },
+        { en: 'defense', zh: '国防' },
+        { en: 'security', zh: '安全' },
+        { en: 'weapon', zh: '武器' },
+        { en: 'nuclear', zh: '核武器' },
+        { en: 'missile', zh: '导弹' },
+        { en: 'drone', zh: '无人机' },
+        { en: 'rocket', zh: '火箭弹' },
+        { en: 'rockets', zh: '火箭弹' },
         
         // 政治
-        'government': '政府', 'president': '总统', 'minister': '部长',
-        'official': '官员', 'Putin': '普京', 'Zelensky': '泽连斯基',
-        'Netanyahu': '内塔尼亚胡', 'Biden': '拜登',
+        { en: 'government', zh: '政府' },
+        { en: 'president', zh: '总统' },
+        { en: 'minister', zh: '部长' },
+        { en: 'official', zh: '官员' },
+        { en: 'officials', zh: '官员' },
+        { en: 'Putin', zh: '普京' },
+        { en: 'Zelensky', zh: '泽连斯基' },
+        { en: 'Netanyahu', zh: '内塔尼亚胡' },
+        { en: 'Biden', zh: '拜登' },
         
         // 动作
-        'advance': '推进', 'retreat': '撤退', 'deploy': '部署',
-        'ceasefire': '停火', 'negotiation': '谈判', 'sanctions': '制裁',
+        { en: 'advance', zh: '推进' },
+        { en: 'advances', zh: '推进' },
+        { en: 'retreat', zh: '撤退' },
+        { en: 'deploy', zh: '部署' },
+        { en: 'deployment', zh: '部署' },
+        { en: 'ceasefire', zh: '停火' },
+        { en: 'negotiation', zh: '谈判' },
+        { en: 'negotiations', zh: '谈判' },
+        { en: 'sanctions', zh: '制裁' },
+        { en: 'reported', zh: '报道' },
+        { en: 'reports', zh: '报道' },
+        { en: 'reportedly', zh: '据报道' },
+        { en: 'announced', zh: '宣布' },
+        { en: 'announces', zh: '宣布' },
+        { en: 'according to', zh: '根据' },
+        { en: 'attack', zh: '袭击' },
+        { en: 'attacks', zh: '袭击' },
+        { en: 'against', zh: '反对' },
+        { en: 'further', zh: '进一步' },
+        { en: 'carry out', zh: '执行' },
+        { en: 'carried out', zh: '执行' },
+        
+        // 描述
+        { en: 'new', zh: '新' },
+        { en: 'ongoing', zh: '持续' },
+        { en: 'continued', zh: '持续' },
+        { en: 'eastern', zh: '东部' },
+        { en: 'western', zh: '西部' },
+        { en: 'northern', zh: '北部' },
+        { en: 'southern', zh: '南部' },
+        { en: 'region', zh: '地区' },
+        { en: 'area', zh: '地区' },
+        { en: 'said', zh: '表示' },
+        { en: 'says', zh: '表示' },
+        { en: 'saying', zh: '表示' },
+        { en: 'following', zh: '在...之后' },
+        { en: 'remains', zh: '仍然' },
+        { en: 'remains tense', zh: '仍然紧张' },
+        { en: 'remains on the table', zh: '在考虑范围内' },
+        
+        // 介词和冠词 (放在最后处理)
+        { en: 'with', zh: '' },
+        { en: 'without', zh: '' },
+        { en: 'in the', zh: '' },
+        { en: 'of the', zh: '' },
+        { en: 'of its', zh: '' },
+        { en: 'the', zh: '' },
+        { en: 'a', zh: '' },
+        { en: 'an', zh: '' },
+        { en: 'and', zh: '和' },
+        { en: 'or', zh: '或' },
+        { en: 'is', zh: '' },
+        { en: 'are', zh: '' },
+        { en: 'was', zh: '' },
+        { en: 'were', zh: '' },
+        { en: 'has', zh: '' },
+        { en: 'have', zh: '' },
+        { en: 'had', zh: '' },
+        { en: 'to', zh: '' },
+        { en: 'for', zh: '' },
+        { en: 'from', zh: '' },
+        { en: 'by', zh: '' },
+        { en: 'on', zh: '' },
+        { en: 'at', zh: '' },
+        { en: 'in', zh: '' },
+        { en: 'as', zh: '作为' },
         
         // 媒体
-        'Reuters': '路透社', 'BBC': 'BBC', 'CNN': 'CNN',
-        'Al Jazeera': '半岛电视台', 'NYT': '纽约时报',
-        
-        // 其他
-        'support': '支持', 'aid': '援助', 'peace': '和平',
-        'talks': '会谈', 'summit': '峰会', 'announced': '宣布',
-        'reported': '报道', 'according to': '根据'
-    };
+        { en: 'Reuters', zh: '路透社' },
+        { en: 'BBC', zh: 'BBC' },
+        { en: 'CNN', zh: 'CNN' },
+        { en: 'Al Jazeera', zh: '半岛电视台' },
+        { en: 'NYT', zh: '纽约时报' },
+    ];
+    
+    // 按长度降序排列，先匹配长句
+    dict.sort((a, b) => b.en.length - a.en.length);
     
     function translate(text) {
+        if (!text) return '';
         let result = text;
-        const words = Object.keys(dict).sort((a, b) => b.length - a.length);
-        for (const word of words) {
-            const regex = new RegExp('\\b' + word + '\\b', 'gi');
-            result = result.replace(regex, dict[word]);
+        
+        // 先处理所有匹配 (按长度降序)
+        for (const item of dict) {
+            if (item.zh === '') {
+                // 删除空翻译的词
+                const regex = new RegExp('\\b' + item.en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+                result = result.replace(regex, '');
+            } else {
+                const regex = new RegExp('\\b' + item.en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+                result = result.replace(regex, item.zh);
+            }
         }
+        
+        // 清理多余空格
+        result = result.replace(/\s+/g, ' ').trim();
+        
         return result;
     }
     
