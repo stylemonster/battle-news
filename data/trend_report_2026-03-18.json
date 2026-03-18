@@ -1,16 +1,16 @@
 {
   "date": "2026-03-18",
-  "timestamp": "2026-03-18 03:03:38",
+  "timestamp": "2026-03-18 03:28:26",
   "total_news": 5,
   "total_engagement": 4240,
   "tag_counts": {
-    "Ukraine": 2,
-    "Russia": 3,
-    "US": 4,
-    "Israel": 1,
-    "Hamas": 1,
-    "Iran": 1,
-    "Europe": 1
+    "乌克兰": 2,
+    "俄罗斯": 3,
+    "美国": 4,
+    "以色列": 1,
+    "哈马斯": 1,
+    "伊朗": 1,
+    "欧洲": 1
   },
   "source_counts": {
     "Reuters": 2,
@@ -20,23 +20,23 @@
   },
   "hot_tags": [
     {
-      "tag": "US",
+      "tag": "美国",
       "count": 4
     },
     {
-      "tag": "Russia",
+      "tag": "俄罗斯",
       "count": 3
     },
     {
-      "tag": "Ukraine",
+      "tag": "乌克兰",
       "count": 2
     },
     {
-      "tag": "Israel",
+      "tag": "以色列",
       "count": 1
     },
     {
-      "tag": "Hamas",
+      "tag": "哈马斯",
       "count": 1
     }
   ],

@@ -12,9 +12,9 @@
     "summary_zh": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut. 局势仍然紧张 as 双方继续部署军队.",
     "cleaned": true,
     "tags": [
-      "Ukraine",
-      "Russia",
-      "US"
+      "乌克兰",
+      "俄罗斯",
+      "美国"
     ],
     "original_link": "https://www.reuters.com/world/europe/ukraine-says-russian-forces-advance-eastern-front-2026-03-16/"
   },
@@ -31,8 +31,8 @@
     "summary_zh": "The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子. 这次交火标志着又一次升级 in the 长期冲突.",
     "cleaned": true,
     "tags": [
-      "Israel",
-      "Hamas"
+      "以色列",
+      "哈马斯"
     ],
     "original_link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/"
   },
@@ -49,8 +49,8 @@
     "summary_zh": "The United States has warned 伊朗 against further escalation of its 核武器 program, saying 所有选项都在考虑范围内. 国际谈判已达成 关键点.",
     "cleaned": true,
     "tags": [
-      "Iran",
-      "US"
+      "伊朗",
+      "美国"
     ],
     "original_link": "https://www.cnn.com/world/iran-us-nuclear-2026-03-16/"
   },
@@ -67,10 +67,10 @@
     "summary_zh": "北约 国防部长开会 to 讨论增加军事支持 for 乌克兰 在持续冲突中 with 俄罗斯. 宣布了新的援助计划.",
     "cleaned": true,
     "tags": [
-      "Ukraine",
-      "Russia",
-      "US",
-      "Europe"
+      "乌克兰",
+      "俄罗斯",
+      "美国",
+      "欧洲"
     ],
     "original_link": "https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/"
   },
@@ -87,8 +87,8 @@
     "summary_zh": "俄罗斯 军事官员 宣布 a new 攻势 operation in the 顿巴斯 region. 乌克兰军队正在准备 防御阵地.",
     "cleaned": true,
     "tags": [
-      "Russia",
-      "US"
+      "俄罗斯",
+      "美国"
     ],
     "original_link": "https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/"
   }

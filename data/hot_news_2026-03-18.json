@@ -1,5 +1,5 @@
 {
-  "Ukraine": [
+  "乌克兰": [
     {
       "title": "乌克兰称俄罗斯军队在东部前线推进",
       "summary": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut. 局势仍然紧张 as 双方继续部署军队.",
@@ -17,7 +17,7 @@
       "engagement": 526
     }
   ],
-  "Russia": [
+  "俄罗斯": [
     {
       "title": "乌克兰称俄罗斯军队在东部前线推进",
       "summary": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut. 局势仍然紧张 as 双方继续部署军队.",
@@ -43,7 +43,7 @@
       "engagement": 442
     }
   ],
-  "US": [
+  "美国": [
     {
       "title": "乌克兰称俄罗斯军队在东部前线推进",
       "summary": "Ukrainian 军事官员 报道 俄罗斯持续推进 in the 东部顿巴斯地区, with 激战 around Avdiivka and Bakhmut. 局势仍然紧张 as 双方继续部署军队.",
@@ -77,7 +77,7 @@
       "engagement": 442
     }
   ],
-  "Israel": [
+  "以色列": [
     {
       "title": "以色列 加沙火箭弹袭击后以军发动空袭",
       "summary": "The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子. 这次交火标志着又一次升级 in the 长期冲突.",
@@ -87,7 +87,7 @@
       "engagement": 956
     }
   ],
-  "Hamas": [
+  "哈马斯": [
     {
       "title": "以色列 加沙火箭弹袭击后以军发动空袭",
       "summary": "The Israeli 军事 carried out 空袭 in 加沙 连夜 following 火箭弹 attacks from 巴勒斯坦武装分子. 这次交火标志着又一次升级 in the 长期冲突.",
@@ -97,7 +97,7 @@
       "engagement": 956
     }
   ],
-  "Iran": [
+  "伊朗": [
     {
       "title": "美国就核计划警告伊朗 escalation",
       "summary": "The United States has warned 伊朗 against further escalation of its 核武器 program, saying 所有选项都在考虑范围内. 国际谈判已达成 关键点.",
@@ -107,7 +107,7 @@
       "engagement": 724
     }
   ],
-  "Europe": [
+  "欧洲": [
     {
       "title": "北约盟国讨论增加支持 for 乌克兰",
       "summary": "北约 国防部长开会 to 讨论增加军事支持 for 乌克兰 在持续冲突中 with 俄罗斯. 宣布了新的援助计划.",

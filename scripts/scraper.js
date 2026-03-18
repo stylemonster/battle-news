@@ -32,14 +32,14 @@ const CONFIG = {
         'NATO Russia'
     ],
     
-    // 标签
-    TAGS: ['Russia', 'Ukraine', 'Iran', 'US', 'Middle East', 'Israel', 'Hamas', 'Europe', 'NATO'],
+    // 标签 (中英文对照)
+    TAGS: ['俄罗斯', '乌克兰', '伊朗', '美国', '中东', '以色列', '哈马斯', '欧洲', '北约'],
     
     // 告警阈值
     ALERT_THRESHOLD: {
-        'Ukraine': 10,
-        'Middle East': 5,
-        'Russia': 10
+        '乌克兰': 10,
+        '中东': 5,
+        '俄罗斯': 10
     }
 };
 
@@ -247,15 +247,15 @@ async function classifyAndTag(newsData) {
         const tags = [];
         const text = (item.title + item.summary).toLowerCase();
         
-        // 按关键词自动分类
-        if (text.includes('ukraine') || text.includes('zelensky')) tags.push('Ukraine');
-        if (text.includes('russia') || text.includes('putin') || text.includes('kremlin')) tags.push('Russia');
-        if (text.includes('israel') || text.includes('netanyahu')) tags.push('Israel');
-        if (text.includes('gaza') || text.includes('hamas') || text.includes('palestinian')) tags.push('Hamas');
-        if (text.includes('iran') || text.includes('tehran')) tags.push('Iran');
-        if (text.includes('us') || text.includes('america') || text.includes('biden')) tags.push('US');
-        if (text.includes('nato') || text.includes('europe')) tags.push('Europe');
-        if (text.includes('middle east')) tags.push('Middle East');
+        // 按关键词自动分类 (英文匹配 -> 中文标签)
+        if (text.includes('ukraine') || text.includes('zelensky')) tags.push('乌克兰');
+        if (text.includes('russia') || text.includes('putin') || text.includes('kremlin')) tags.push('俄罗斯');
+        if (text.includes('israel') || text.includes('netanyahu')) tags.push('以色列');
+        if (text.includes('gaza') || text.includes('hamas') || text.includes('palestinian')) tags.push('哈马斯');
+        if (text.includes('iran') || text.includes('tehran')) tags.push('伊朗');
+        if (text.includes('us') || text.includes('america') || text.includes('biden')) tags.push('美国');
+        if (text.includes('nato') || text.includes('europe')) tags.push('欧洲');
+        if (text.includes('middle east')) tags.push('中东');
         
         // 如果没有标签，标记为Other
         return { 
