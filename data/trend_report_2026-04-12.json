@@ -1,0 +1,35 @@
+{
+  "date": "2026-04-12",
+  "timestamp": "2026-04-12 03:16:25",
+  "total_news": 18,
+  "total_engagement": 18570,
+  "tag_counts": {
+    "伊朗": 4,
+    "美国": 10,
+    "其他": 7,
+    "以色列": 1
+  },
+  "source_counts": {
+    "BBC": 10,
+    "Al Jazeera": 8
+  },
+  "hot_tags": [
+    {
+      "tag": "美国",
+      "count": 10
+    },
+    {
+      "tag": "其他",
+      "count": 7
+    },
+    {
+      "tag": "伊朗",
+      "count": 4
+    },
+    {
+      "tag": "以色列",
+      "count": 1
+    }
+  ],
+  "previous_day_comparison": {}
+}

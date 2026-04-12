@@ -1,0 +1,45 @@
+{
+  "date": "2026-03-30",
+  "timestamp": "2026-03-30 15:43:34",
+  "total_news": 24,
+  "total_engagement": 22825,
+  "tag_counts": {
+    "伊朗": 9,
+    "美国": 16,
+    "以色列": 4,
+    "其他": 5,
+    "俄罗斯": 6,
+    "乌克兰": 2,
+    "哈马斯": 1,
+    "欧洲": 1
+  },
+  "source_counts": {
+    "BBC": 11,
+    "Al Jazeera": 10,
+    "Reuters": 2,
+    "CNN": 1
+  },
+  "hot_tags": [
+    {
+      "tag": "美国",
+      "count": 16
+    },
+    {
+      "tag": "伊朗",
+      "count": 9
+    },
+    {
+      "tag": "俄罗斯",
+      "count": 6
+    },
+    {
+      "tag": "其他",
+      "count": 5
+    },
+    {
+      "tag": "以色列",
+      "count": 4
+    }
+  ],
+  "previous_day_comparison": {}
+}

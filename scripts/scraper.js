@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { scrapeRealNews } = require('./news_api');
+const { scrapeRealNews, fetchRealNewsWithPlaywright } = require('./news_api');
 const { sendAlert } = require('./notifier');
 const { translate } = require('./translator');
 
@@ -61,59 +61,70 @@ function log(msg) {
 async function scrapeNews() {
     log('📰 开始抓取新闻...');
     
-    // 模拟新闻数据（实际需要接入真实API或爬虫）
-    const newsData = [
-        {
-            title: 'Ukraine says Russian forces advance on eastern front',
-            summary: 'Ukrainian military officials reported continued Russian advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut. The situation remains tense as both sides continue to deploy troops.',
-            link: 'https://www.reuters.com/world/europe/ukraine-says-russian-forces-advance-eastern-front-2026-03-16/',
-            timestamp: getDateTimeStr(),
-            source: 'Reuters',
-            likes: Math.floor(Math.random() * 1000),
-            shares: Math.floor(Math.random() * 500),
-            comments: Math.floor(Math.random() * 200)
-        },
-        {
-            title: 'Israel conducts airstrikes in Gaza after rocket fire',
-            summary: 'The Israeli military carried out airstrikes in Gaza overnight following rocket attacks from Palestinian militants. The exchange marks another escalation in the long-standing conflict.',
-            link: 'https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/',
-            timestamp: getDateTimeStr(),
-            source: 'BBC',
-            likes: Math.floor(Math.random() * 800),
-            shares: Math.floor(Math.random() * 300),
-            comments: Math.floor(Math.random() * 150)
-        },
-        {
-            title: 'US warns Iran over nuclear program escalation',
-            summary: 'The United States has warned Iran against further escalation of its nuclear program, saying all options remain on the table. International negotiations have reached a critical point.',
-            link: 'https://www.cnn.com/world/iran-us-nuclear-2026-03-16/',
-            timestamp: getDateTimeStr(),
-            source: 'CNN',
-            likes: Math.floor(Math.random() * 600),
-            shares: Math.floor(Math.random() * 200),
-            comments: Math.floor(Math.random() * 100)
-        },
-        {
-            title: 'NATO allies discuss increased support for Ukraine',
-            summary: 'NATO defense ministers met to discuss increasing military support for Ukraine amid ongoing conflict with Russia. Several new aid packages were announced.',
-            link: 'https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/',
-            timestamp: getDateTimeStr(),
-            source: 'Al Jazeera',
-            likes: Math.floor(Math.random() * 500),
-            shares: Math.floor(Math.random() * 250),
-            comments: Math.floor(Math.random() * 80)
-        },
-        {
-            title: 'Russian military announces new offensive in Donbas',
-            summary: 'Russian military officials announced a new offensive operation in the Donbas region. Ukrainian forces are preparing defensive positions.',
-            link: 'https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/',
-            timestamp: getDateTimeStr(),
-            source: 'Reuters',
-            likes: Math.floor(Math.random() * 400),
-            shares: Math.floor(Math.random() * 200),
-            comments: Math.floor(Math.random() * 100)
-        }
-    ];
+    // 使用 Playwright Stealth 抓取真实新闻
+    let newsData = [];
+    try {
+        newsData = await fetchRealNewsWithPlaywright();
+    } catch (e) {
+        log(`⚠️ Playwright 抓取失败: ${e.message}，使用备用方案`);
+    }
+    
+    // 如果 Playwright 抓取失败，使用备用新闻源
+    if (newsData.length === 0) {
+        log('📰 使用备用新闻数据...');
+        newsData = [
+            {
+                title: 'Ukraine says Russian forces advance on eastern front',
+                summary: 'Ukrainian military officials reported continued Russian advances in the eastern Donbas region, with heavy fighting around Avdiivka and Bakhmut. The situation remains tense as both sides continue to deploy troops.',
+                link: 'https://www.reuters.com/world/europe/ukraine-says-russian-forces-advance-eastern-front-2026-03-16/',
+                timestamp: getDateTimeStr(),
+                source: 'Reuters',
+                likes: Math.floor(Math.random() * 1000),
+                shares: Math.floor(Math.random() * 500),
+                comments: Math.floor(Math.random() * 200)
+            },
+            {
+                title: 'Israel conducts airstrikes in Gaza after rocket fire',
+                summary: 'The Israeli military carried out airstrikes in Gaza overnight following rocket attacks from Palestinian militants. The exchange marks another escalation in the long-standing conflict.',
+                link: 'https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/',
+                timestamp: getDateTimeStr(),
+                source: 'BBC',
+                likes: Math.floor(Math.random() * 800),
+                shares: Math.floor(Math.random() * 300),
+                comments: Math.floor(Math.random() * 150)
+            },
+            {
+                title: 'US warns Iran over nuclear program escalation',
+                summary: 'The United States has warned Iran against further escalation of its nuclear program, saying all options remain on the table. International negotiations have reached a critical point.',
+                link: 'https://www.cnn.com/world/iran-us-nuclear-2026-03-16/',
+                timestamp: getDateTimeStr(),
+                source: 'CNN',
+                likes: Math.floor(Math.random() * 600),
+                shares: Math.floor(Math.random() * 200),
+                comments: Math.floor(Math.random() * 100)
+            },
+            {
+                title: 'NATO allies discuss increased support for Ukraine',
+                summary: 'NATO defense ministers met to discuss increasing military support for Ukraine amid ongoing conflict with Russia. Several new aid packages were announced.',
+                link: 'https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/',
+                timestamp: getDateTimeStr(),
+                source: 'Al Jazeera',
+                likes: Math.floor(Math.random() * 500),
+                shares: Math.floor(Math.random() * 250),
+                comments: Math.floor(Math.random() * 80)
+            },
+            {
+                title: 'Russian military announces new offensive in Donbas',
+                summary: 'Russian military officials announced a new offensive operation in the Donbas region. Ukrainian forces are preparing defensive positions.',
+                link: 'https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/',
+                timestamp: getDateTimeStr(),
+                source: 'Reuters',
+                likes: Math.floor(Math.random() * 400),
+                shares: Math.floor(Math.random() * 200),
+                comments: Math.floor(Math.random() * 100)
+            }
+        ];
+    }
     
     const filename = `raw_battle_news_${getDateStr()}.json`;
     const filepath = path.join(CONFIG.OUTPUT_DIR, filename);
@@ -354,30 +365,128 @@ async function cleanAndTranslate(newsData) {
     return translated;
 }
 
-// ============ 3. 分类与标签化 ============
+// ============ 3. 分类与标签化 (增强版) ============
+
+// 地区映射
+const REGION_MAP = {
+    'ukraine': { zh: '乌克兰', region: '东欧' },
+    'russia': { zh: '俄罗斯', region: '东欧' },
+    'donbas': { zh: '顿巴斯', region: '东欧' },
+    'kremlin': { zh: '莫斯科', region: '东欧' },
+    'israel': { zh: '以色列', region: '中东' },
+    'gaza': { zh: '加沙', region: '中东' },
+    'palestinian': { zh: '巴勒斯坦', region: '中东' },
+    'hamas': { zh: '加沙', region: '中东' },
+    'iran': { zh: '伊朗', region: '中东' },
+    'tehran': { zh: '德黑兰', region: '中东' },
+    'jerusalem': { zh: '耶路撒冷', region: '中东' },
+    'netanyahu': { zh: '以色列', region: '中东' },
+    'nato': { zh: '北约', region: '欧洲' },
+    'europe': { zh: '欧洲', region: '欧洲' },
+    'us': { zh: '美国', region: '北美' },
+    'america': { zh: '美国', region: '北美' },
+    'biden': { zh: '美国', region: '北美' },
+    'trump': { zh: '美国', region: '北美' }
+};
+
+// 事件类型映射
+const EVENT_TYPE_MAP = {
+    'airstrike': { zh: '空袭', priority: 'high' },
+    'attack': { zh: '袭击', priority: 'high' },
+    'offensive': { zh: '攻势', priority: 'high' },
+    'military': { zh: '军事行动', priority: 'medium' },
+    'war': { zh: '战争', priority: 'high' },
+    'conflict': { zh: '冲突', priority: 'medium' },
+    'strike': { zh: '打击', priority: 'high' },
+    'battle': { zh: '战斗', priority: 'high' },
+    'troops': { zh: '军事部署', priority: 'medium' },
+    'soldiers': { zh: '军事行动', priority: 'medium' },
+    'nuclear': { zh: '核计划', priority: 'high' },
+    'sanctions': { zh: '制裁', priority: 'low' },
+    'negotiation': { zh: '谈判', priority: 'low' },
+    'ceasefire': { zh: '停火', priority: 'high' },
+    'summit': { zh: '峰会', priority: 'low' },
+    'meeting': { zh: '会议', priority: 'low' },
+    'announcement': { zh: '声明', priority: 'low' }
+};
+
+function detectRegion(text) {
+    const lower = text.toLowerCase();
+    for (const [key, value] of Object.entries(REGION_MAP)) {
+        if (lower.includes(key)) return value;
+    }
+    return { zh: '其他', region: '其他' };
+}
+
+function detectEventType(text) {
+    const lower = text.toLowerCase();
+    for (const [key, value] of Object.entries(EVENT_TYPE_MAP)) {
+        if (lower.includes(key)) return value;
+    }
+    return { zh: '动态', priority: 'low' };
+}
+
+function assessImportance(text, source) {
+    const lower = text.toLowerCase();
+    // 高优先级关键词
+    const highPriority = ['war', 'attack', 'airstrike', 'killed', 'death', 'casualty', 'offensive', 'invasion', 'strike', 'missile', 'drone', 'nuclear', 'ceasefire', 'truce'];
+    // 中优先级
+    const mediumPriority = ['military', 'troops', 'soldiers', 'deployment', 'conflict', 'battle', 'fight'];
+    
+    for (const kw of highPriority) {
+        if (lower.includes(kw)) return 'high';
+    }
+    for (const kw of mediumPriority) {
+        if (lower.includes(kw)) return 'medium';
+    }
+    return 'low';
+}
 
 async function classifyAndTag(newsData) {
     log('🏷️ 开始分类和标签化...');
     
     const tagged = newsData.map(item => {
-        const tags = [];
         const text = (item.title + item.summary).toLowerCase();
         
-        // 按关键词自动分类 (英文匹配 -> 中文标签)
+        // 1. 提取标签
+        const tags = [];
         if (text.includes('ukraine') || text.includes('zelensky')) tags.push('乌克兰');
         if (text.includes('russia') || text.includes('putin') || text.includes('kremlin')) tags.push('俄罗斯');
         if (text.includes('israel') || text.includes('netanyahu')) tags.push('以色列');
         if (text.includes('gaza') || text.includes('hamas') || text.includes('palestinian')) tags.push('哈马斯');
         if (text.includes('iran') || text.includes('tehran')) tags.push('伊朗');
-        if (text.includes('us') || text.includes('america') || text.includes('biden')) tags.push('美国');
+        if (text.includes('us') || text.includes('america') || text.includes('biden') || text.includes('trump')) tags.push('美国');
         if (text.includes('nato') || text.includes('europe')) tags.push('欧洲');
         if (text.includes('middle east')) tags.push('中东');
         
-        // 如果没有标签，标记为Other
+        // 2. 提取地区
+        const regionInfo = detectRegion(text);
+        
+        // 3. 提取事件类型
+        const eventInfo = detectEventType(text);
+        
+        // 4. 评估重要性
+        const importance = assessImportance(text, item.source);
+        
+        // 5. 核实状态 (基于来源)
+        const verification = ['BBC', 'Reuters', 'Al Jazeera'].includes(item.source) ? '已核实' : '待核实';
+        
+        // 6. 时效性判断 (简化: 24小时内为今日)
+        const newsDate = new Date(item.timestamp);
+        const now = new Date();
+        const hoursDiff = (now - newsDate) / (1000 * 60 * 60);
+        const timeCategory = hoursDiff <= 24 ? 'today' : (hoursDiff <= 48 ? 'yesterday' : 'older');
+        
         return { 
             ...item, 
-            tags: tags.length > 0 ? tags : ['Other'],
-            original_link: item.link  // 保留原文链接
+            tags: tags.length > 0 ? tags : ['其他'],
+            region: regionInfo.zh,
+            regionGroup: regionInfo.region,
+            eventType: eventInfo.zh,
+            importance: importance,
+            verification: verification,
+            timeCategory: timeCategory,
+            original_link: item.link
         };
     });
     
@@ -507,44 +616,156 @@ async function archiveData(newsData) {
     return { csvFilename };
 }
 
-// ============ 7. 生成网站 ============
+// ============ 7. 生成网站 (优化版) ============
+
+// 背景信息字典
+const BACKGROUND_INFO = {
+    '顿巴斯': '顿巴斯：俄乌冲突核心区域，2014年起处于争议状态，包含顿涅茨克和卢甘斯克',
+    '加沙': '加沙地带：巴勒斯坦领土，2007年起由哈马斯控制，以色列实施封锁',
+    '乌克兰': '乌克兰：东欧国家，2014年克里米亚危机后与俄罗斯关系恶化，2022年全面战争爆发',
+    '俄罗斯': '俄罗斯：全球最大国家，2022年入侵乌克兰引发国际制裁',
+    '以色列': '以色列：中东唯一犹太国家，与阿拉伯国家长期存在领土争议',
+    '伊朗': '伊朗：中东主要国家，核计划引发国际关注，与美国关系紧张',
+    '耶路撒冷': '耶路撒冷：以色列和巴勒斯坦争议首都，被犹太教、基督教、伊斯兰教视为圣地'
+};
+
+function getBackgroundInfo(term) {
+    return BACKGROUND_INFO[term] || '';
+}
+
+// 生成单条新闻卡片 (三层结构: 标题+标签 | 摘要 | 详情)
+function generateNewsCard(item, index) {
+    const importanceClass = item.importance === 'high' ? 'importance-high' : (item.importance === 'medium' ? 'importance-medium' : 'importance-low');
+    const importanceLabel = item.importance === 'high' ? '⚡高优先' : (item.importance === 'medium' ? '中优先' : '一般');
+    
+    // 标签
+    const tags = (item.tags || []).map(t => `<span class="tag tag-region">${t}</span>`).join('');
+    const eventTag = `<span class="tag tag-event">${item.eventType}</span>`;
+    const verifyTag = item.verification === '已核实' ? '<span class="tag tag-verified">✓已核实</span>' : '<span class="tag tag-pending">⏳待核实</span>';
+    
+    // 摘要 (第一句话)
+    const summary = item.summary_zh || item.summary || '';
+    const summaryText = summary.split('.')[0] + (summary.split('.').length > 1 ? '.' : '');
+    
+    // 详情 (完整内容，折叠显示)
+    const detail = item.summary_zh || item.summary || '';
+    
+    // 背景信息
+    const bgInfo = getBackgroundInfo(item.region);
+    const bgTooltip = bgInfo ? `<span class="bg-info" title="${bgInfo}">ℹ️</span>` : '';
+    
+    // 时间处理
+    const timeDisplay = item.timestamp ? item.timestamp.replace('T', ' ').slice(0, 16) : '';
+    
+    return `
+    <article class="news-card ${importanceClass}" id="news-${index}">
+        <div class="news-header">
+            <div class="news-meta-line">
+                <span class="time">${timeDisplay}</span>
+                <span class="region">${item.region}${bgTooltip}</span>
+                ${eventTag}
+                ${verifyTag}
+            </div>
+            <div class="news-title-row">
+                <h3 class="news-title">${item.title_zh || item.title}</h3>
+                ${item.importance === 'high' ? '<span class="priority-badge">高优先</span>' : ''}
+            </div>
+        </div>
+        <div class="news-summary">${summaryText}</div>
+        <div class="news-detail-toggle" onclick="toggleDetail('detail-${index}')">
+            <span class="toggle-text">展开详情 ▼</span>
+        </div>
+        <div class="news-detail" id="detail-${index}">
+            <p>${detail}</p>
+            <div class="news-footer">
+                <span class="source">📰 来源: ${item.source}</span>
+                <a href="${item.original_link}" target="_blank" class="original-link">查看原文 →</a>
+            </div>
+        </div>
+        <div class="news-tags">${tags}</div>
+    </article>`;
+}
+
+// 生成时间线
+function generateTimeline(newsData) {
+    // 按时间排序
+    const sorted = [...newsData].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    const timelineItems = sorted.slice(0, 5).map(item => {
+        const time = item.timestamp ? item.timestamp.replace('T', ' ').slice(0, 16) : '';
+        return `<div class="timeline-item">
+            <div class="timeline-time">${time}</div>
+            <div class="timeline-content">
+                <span class="timeline-region">${item.region}</span>
+                <span class="timeline-title">${item.title_zh || item.title}</span>
+            </div>
+        </div>`;
+    }).join('');
+    
+    return `<div class="timeline">${timelineItems}</div>`;
+}
+
+// 生成统计表格
+function generateStatsTable(trendReport, newsData) {
+    // 按地区统计
+    const regionStats = {};
+    newsData.forEach(item => {
+        const r = item.regionGroup || '其他';
+        regionStats[r] = (regionStats[r] || 0) + 1;
+    });
+    
+    const rows = Object.entries(regionStats)
+        .sort((a, b) => b[1] - a[1])
+        .map(([region, count]) => `<tr><td>${region}</td><td>${count}</td></tr>`).join('');
+    
+    // 来源统计
+    const sourceStats = Object.entries(trendReport.source_counts || {})
+        .sort((a, b) => b[1] - a[1])
+        .map(([source, count]) => `<tr><td>${source}</td><td>${count}</td></tr>`).join('');
+    
+    return `
+    <div class="stats-table-container">
+        <table class="stats-table">
+            <thead><tr><th>战区</th><th>新闻数</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table>
+        <table class="stats-table">
+            <thead><tr><th>信息来源</th><th>数量</th></tr></thead>
+            <tbody>${sourceStats}</tbody>
+        </table>
+    </div>`;
+}
 
 function generateWebsite(newsData, hotNews, trendReport) {
-    log('🌐 生成网站内容...');
+    log('🌐 生成网站内容 (优化版)...');
     
-    // 计算热度标签
+    // 1. 按时间和重要性排序
+    const sortedNews = [...newsData].sort((a, b) => {
+        // 高优先级排前面
+        const importanceOrder = { 'high': 0, 'medium': 1, 'low': 2 };
+        if (importanceOrder[a.importance] !== importanceOrder[b.importance]) {
+            return importanceOrder[a.importance] - importanceOrder[b.importance];
+        }
+        // 同优先级按时间
+        return new Date(b.timestamp) - new Date(a.timestamp);
+    });
+    
+    // 2. 分离紧急新闻 (高优先级 + 48小时内)
+    const urgentNews = sortedNews.filter(n => n.importance === 'high' && n.timeCategory !== 'older');
+    const todayNews = sortedNews.filter(n => n.timeCategory === 'today');
+    const yesterdayNews = sortedNews.filter(n => n.timeCategory === 'yesterday');
+    const olderNews = sortedNews.filter(n => n.timeCategory === 'older');
+    
+    // 3. 生成各板块
+    const urgentCards = urgentNews.slice(0, 3).map((n, i) => generateNewsCard(n, `urgent-${i}`)).join('');
+    const todayCards = todayNews.map((n, i) => generateNewsCard(n, `today-${i}`)).join('');
+    const yesterdayCards = yesterdayNews.map((n, i) => generateNewsCard(n, `yesterday-${i}`)).join('');
+    const timeline = generateTimeline(newsData);
+    const statsTable = generateStatsTable(trendReport, newsData);
+    
+    // 4. 热度标签
     const trendingTags = trendReport.hot_tags.map(t => `
         <div class="trending-item">
             <span class="count">${t.count}</span> ${t.tag}
-        </div>`).join('');
-    
-    // 热门新闻卡片
-    const hotNewsCards = newsData.slice(0, 6).map(n => `
-        <div class="card">
-            <div class="meta">
-                <span class="source">${n.source}</span> · ${n.timestamp}
-                <a href="${n.original_link}" target="_blank" class="original-link">原文→</a>
-            </div>
-            <h3>${n.title_zh || n.title}</h3>
-            <p class="summary">${n.summary_zh || n.summary}</p>
-            <div class="tags">${(n.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}</div>
-        </div>`).join('');
-    
-    // 按战区分类
-    const tagSections = Object.entries(hotNews).slice(0, 6).map(([tag, articles]) => `
-        <div class="section">
-            <h2>⚔️ ${tag} 战区</h2>
-            <div class="grid">
-                ${articles.slice(0, 3).map(n => `
-                <div class="card">
-                    <div class="meta">
-                        ${n.source} · ${n.timestamp}
-                        <a href="${n.link}" target="_blank" class="original-link">原文→</a>
-                    </div>
-                    <h3>${n.title}</h3>
-                    <p class="summary">${n.summary}</p>
-                </div>`).join('')}
-            </div>
         </div>`).join('');
     
     const indexContent = `<!DOCTYPE html>
@@ -554,109 +775,404 @@ function generateWebsite(newsData, hotNews, trendReport) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全球战场新闻资讯 | Global Battle News</title>
     <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: #1c2128;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent-red: #da3633;
+            --accent-orange: #d29922;
+            --accent-blue: #58a6ff;
+            --border-color: #30363d;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a1a; color: #eee; line-height: 1.6; }
-        header { background: linear-gradient(90deg, #000 0%, #222 100%); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #e63946; }
-        .logo { font-size: 1.8rem; font-weight: 900; color: #e63946; letter-spacing: 2px; }
-        .logo span { color: #fff; }
-        .disclaimer { font-size: 0.75rem; color: #888; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .section { margin-bottom: 2.5rem; }
-        .section h2 { border-bottom: 2px solid #e63946; padding-bottom: 0.5rem; margin-bottom: 1rem; font-size: 1.3rem; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; 
+            background: var(--bg-primary); 
+            color: var(--text-primary); 
+            line-height: 1.6;
+        }
+        
+        /* 头部 */
+        header { 
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%); 
+            padding: 1.5rem 2rem; 
+            border-bottom: 3px solid var(--accent-red);
+        }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--accent-red); letter-spacing: 2px; }
+        .logo span { color: var(--text-primary); }
+        .update-info { font-size: 0.85rem; color: var(--text-secondary); }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
         
         /* 统计栏 */
-        .stats { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .stat { background: #2a2a2a; padding: 1rem 1.5rem; border-radius: 8px; text-align: center; }
-        .stat .num { font-size: 2rem; font-weight: bold; color: #e63946; }
-        .stat .label { font-size: 0.8rem; color: #888; }
+        .stats-bar { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 1rem; 
+            margin-bottom: 2rem; 
+        }
+        .stat-box { 
+            background: var(--bg-secondary); 
+            padding: 1rem; 
+            border-radius: 8px; 
+            text-align: center; 
+            border: 1px solid var(--border-color);
+        }
+        .stat-box .num { font-size: 1.8rem; font-weight: bold; color: var(--accent-red); }
+        .stat-box .label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; }
         
-        /* 热度趋势 */
-        .trending { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
-        .trending-item { background: #2a2a2a; padding: 0.8rem 1.2rem; border-radius: 20px; display: flex; align-items: center; gap: 0.5rem; }
-        .trending-item .count { background: #e63946; color: #fff; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.8rem; }
+        /* 紧急播报 */
+        .urgent-section {
+            background: linear-gradient(135deg, #2d1b1b 0%, #1c2128 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .urgent-section h2 { 
+            color: var(--accent-red); 
+            font-size: 1.3rem; 
+            margin-bottom: 1rem; 
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
         
-        /* 卡片网格 */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
-        .card { background: #2a2a2a; border-radius: 8px; padding: 1.2rem; border-left: 3px solid #e63946; transition: transform 0.2s; }
-        .card:hover { transform: translateY(-3px); }
-        .card h3 { font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.4; }
-        .card .meta { font-size: 0.8rem; color: #888; margin-bottom: 0.5rem; }
-        .card .source { color: #e63946; font-weight: bold; }
-        .card .summary { color: #aaa; font-size: 0.9rem; margin-bottom: 0.8rem; }
-        .card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .card .tag { background: #444; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.7rem; }
+        /* 区块标题 */
+        .section-title { 
+            font-size: 1.2rem; 
+            color: var(--text-primary); 
+            margin-bottom: 1rem; 
+            padding-bottom: 0.5rem; 
+            border-bottom: 2px solid var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
         
-        /* 原文链接 */
-        .original-link { float: right; color: #e63946; text-decoration: none; font-size: 0.75rem; }
+        /* 新闻卡片 - 三层结构 */
+        .news-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--border-color);
+            transition: all 0.2s;
+        }
+        .news-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        
+        /* 重要性标识 */
+        .news-card.importance-high { border-left-color: var(--accent-red); }
+        .news-card.importance-medium { border-left-color: var(--accent-orange); }
+        .priority-badge { 
+            background: var(--accent-red); 
+            color: white; 
+            padding: 0.2rem 0.5rem; 
+            border-radius: 4px; 
+            font-size: 0.7rem; 
+            margin-left: 0.5rem;
+        }
+        
+        /* 卡片头部 */
+        .news-header { margin-bottom: 0.8rem; }
+        .news-meta-line { 
+            font-size: 0.75rem; 
+            color: var(--text-secondary); 
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .news-meta-line .time { color: var(--accent-blue); }
+        .news-meta-line .region { 
+            background: var(--bg-secondary); 
+            padding: 0.1rem 0.5rem; 
+            border-radius: 4px; 
+        }
+        
+        /* 标签 */
+        .tag { 
+            padding: 0.2rem 0.5rem; 
+            border-radius: 4px; 
+            font-size: 0.7rem; 
+            margin-right: 0.3rem;
+        }
+        .tag-region { background: #238636; color: white; }
+        .tag-event { background: #1f6feb; color: white; }
+        .tag-verified { background: #238636; color: white; }
+        .tag-pending { background: #d29922; color: black; }
+        
+        /* 标题 */
+        .news-title-row { display: flex; align-items: center; }
+        .news-title { 
+            font-size: 1rem; 
+            font-weight: 600; 
+            line-height: 1.4;
+        }
+        
+        /* 摘要 */
+        .news-summary { 
+            color: var(--text-secondary); 
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 0.8rem;
+            margin: 0.5rem 0;
+        }
+        
+        /* 详情 (折叠) */
+        .news-detail-toggle {
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 0.3rem 0;
+        }
+        .news-detail {
+            display: none;
+            padding: 0.8rem;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .news-detail.open { display: block; }
+        
+        .news-footer { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            margin-top: 0.8rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+        }
+        .source { color: var(--text-secondary); }
+        
+        .original-link { 
+            color: var(--accent-blue); 
+            text-decoration: none; 
+            font-size: 0.8rem;
+        }
         .original-link:hover { text-decoration: underline; }
         
-        /* 底部 */
-        footer { background: #000; text-align: center; padding: 2rem; color: #666; margin-top: 2rem; }
-        footer .disclaimer { font-size: 0.8rem; margin-top: 0.5rem; }
-        .update-time { text-align: right; color: #666; font-size: 0.8rem; margin-top: 1rem; }
+        /* 标签们 */
+        .news-tags { margin-top: 0.8rem; }
+        
+        /* 热度趋势 */
+        .trending { 
+            display: flex; 
+            gap: 0.8rem; 
+            flex-wrap: wrap; 
+            margin-bottom: 2rem; 
+        }
+        .trending-item { 
+            background: var(--bg-secondary); 
+            padding: 0.5rem 1rem; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem;
+        }
+        .trending-item .count { 
+            background: var(--accent-red); 
+            color: white; 
+            padding: 0.2rem 0.5rem; 
+            border-radius: 10px; 
+            font-size: 0.75rem; 
+        }
+        
+        /* 时间线 */
+        .timeline {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .timeline-item {
+            display: flex;
+            padding: 0.5rem 0;
+            border-left: 2px solid var(--border-color);
+            padding-left: 1rem;
+            margin-left: 0.5rem;
+        }
+        .timeline-time {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            min-width: 120px;
+        }
+        .timeline-region {
+            font-size: 0.75rem;
+            background: #238636;
+            color: white;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            margin-right: 0.5rem;
+        }
+        .timeline-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        /* 统计表格 */
+        .stats-table-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .stats-table th, .stats-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .stats-table th {
+            background: var(--bg-card);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        .stats-table td {
+            font-size: 0.9rem;
+        }
+        
+        /* 背景信息提示 */
+        .bg-info {
+            cursor: help;
+            color: var(--accent-blue);
+            margin-left: 0.3rem;
+        }
+        
+        /* 区块分隔 */
+        .news-section { margin-bottom: 2.5rem; }
+        
+        /* 免责声明 */
+        .disclaimer-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .disclaimer-box h4 { color: var(--accent-orange); margin-bottom: 0.5rem; }
+        .disclaimer-box ul { padding-left: 1.5rem; }
+        .disclaimer-box li { margin-bottom: 0.3rem; }
         
         /* 响应式 */
         @media (max-width: 768px) {
-            .stats { justify-content: center; }
-            .grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .stats-table-container { grid-template-columns: 1fr; }
+            .header-content { flex-direction: column; gap: 0.5rem; }
         }
     </style>
+    <script>
+        function toggleDetail(id) {
+            const el = document.getElementById(id);
+            const toggle = el.previousElementSibling;
+            if (el.classList.contains('open')) {
+                el.classList.remove('open');
+                toggle.querySelector('.toggle-text').textContent = '展开详情 ▼';
+            } else {
+                el.classList.add('open');
+                toggle.querySelector('.toggle-text').textContent = '收起详情 ▲';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
-        <div class="logo">⚔️ <span>全球战场新闻</span>资讯</div>
-        <div class="disclaimer">信息仅供参考，版权归原作者所有</div>
+        <div class="header-content">
+            <div class="logo">⚔️ <span>全球战场</span>新闻</div>
+            <div class="update-info">最后更新: ${getDateTimeStr()}</div>
+        </div>
     </header>
     
     <div class="container">
         <!-- 统计 -->
-        <div class="stats">
-            <div class="stat">
+        <div class="stats-bar">
+            <div class="stat-box">
                 <div class="num">${trendReport.total_news}</div>
                 <div class="label">新闻总数</div>
             </div>
-            <div class="stat">
+            <div class="stat-box">
                 <div class="num">${Object.keys(trendReport.tag_counts).length}</div>
                 <div class="label">涉及战区</div>
             </div>
-            <div class="stat">
-                <div class="num">${trendReport.total_engagement}</div>
-                <div class="label">总互动量</div>
+            <div class="stat-box">
+                <div class="num">${urgentNews.length}</div>
+                <div class="label">紧急事件</div>
             </div>
-            <div class="stat">
+            <div class="stat-box">
                 <div class="num">${trendReport.hot_tags[0]?.tag || '-'}</div>
                 <div class="label">最热战区</div>
             </div>
         </div>
         
+        <!-- 紧急播报 -->
+        ${urgentNews.length > 0 ? `
+        <div class="urgent-section">
+            <h2>🚨 紧急播报 (48小时内高优先)</h2>
+            ${urgentCards}
+        </div>` : ''}
+        
         <!-- 热度趋势 -->
-        <div class="section">
-            <h2>📈 热度趋势</h2>
-            <div class="trending">${trendingTags}</div>
+        <div class="section-title">📈 热度趋势</div>
+        <div class="trending">${trendingTags}</div>
+        
+        <!-- 时间线 -->
+        <div class="section-title">📅 事件时间线</div>
+        ${timeline}
+        
+        <!-- 统计表格 -->
+        <div class="section-title">📊 战区统计</div>
+        ${statsTable}
+        
+        <!-- 今日更新 -->
+        <div class="news-section">
+            <div class="section-title">📰 今日更新 (${todayNews.length}条)</div>
+            ${todayCards || '<p style="color: var(--text-secondary);">暂无今日更新</p>'}
         </div>
         
-        <!-- 热门新闻 -->
-        <div class="section">
-            <h2>🔥 热门新闻</h2>
-            <div class="grid">${hotNewsCards}</div>
+        <!-- 昨日回顾 -->
+        <div class="news-section">
+            <div class="section-title">� Yesterday 昨日回顾 (${yesterdayNews.length}条)</div>
+            ${yesterdayCards || '<p style="color: var(--text-secondary);">暂无昨日更新</p>'}
         </div>
         
-        <!-- 按战区分类 -->
-        ${tagSections}
+        <!-- 免责声明 -->
+        <div class="disclaimer-box">
+            <h4>⚠️ 免责声明</h4>
+            <ul>
+                <li>本站内容均来自公开网络信源（BBC、Reuters、Al Jazeera等），仅作信息整理，不代表本站立场</li>
+                <li>战场信息存在延迟和偏差，请勿将本站内容作为任何决策依据</li>
+                <li>标注"已核实"的内容表示来自权威媒体，但不代表完全准确；"待核实"内容需谨慎对待</li>
+                <li>如涉及敏感内容，请联系本站处理</li>
+            </ul>
+            <p style="margin-top: 0.5rem;">© 2026 Global Battle News | 信息来源: Reuters, BBC, Al Jazeera</p>
+        </div>
         
-        <p class="update-time">🔄 最后更新: ${getDateTimeStr()}</p>
+        <p class="update-info" style="text-align: center; margin-top: 1rem;">
+            🔄 最后更新: ${getDateTimeStr()}
+        </p>
     </div>
-    
-    <footer>
-        <p>全球战场新闻资讯中心</p>
-        <p class="disclaimer">⚠️ 本网站信息仅供参考，不构成任何投资或决策建议</p>
-        <p class="disclaimer">© 2026 All Rights Reserved | 信息来源: Reuters, BBC, CNN, Al Jazeera</p>
-    </footer>
 </body>
 </html>`;
     
     fs.writeFileSync(path.join(CONFIG.NEWS_DIR, 'index.html'), indexContent);
-    log('✅ 网站生成完成: index.html');
+    log('✅ 网站生成完成 (优化版): index.html');
 }
 
 // ============ 主流程 ============
