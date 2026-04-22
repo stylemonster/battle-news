@@ -9,31 +9,47 @@
       "engagement": 1028
     },
     {
-      "title": "Pakistan sends fighter jets Saudi Arabia amid fragile 美国-伊朗 停火",
+      "title": "JD Vance leaves Pakistan after talks 伊朗 end deal",
       "summary": "",
       "source": "Al Jazeera",
-      "timestamp": "2026-04-12 03:16:25",
+      "timestamp": "2026-04-12 04:16:04",
       "link": "https://www.aljazeera.com/news",
-      "engagement": 852
+      "engagement": 964
     },
     {
-      "title": "Vance 表示 no deal reached 伊朗, 美国 made ‘best 和 final offer’",
+      "title": "美国 和 伊朗 fail reach peace deal after marathon talks Pakistan",
       "summary": "",
       "source": "Al Jazeera",
-      "timestamp": "2026-04-12 03:16:25",
+      "timestamp": "2026-04-12 06:17:36",
       "link": "https://www.aljazeera.com/news",
-      "engagement": 560
+      "engagement": 943
     },
     {
-      "title": "Vice-总统 JD Vance 表示 德黑兰 must make \"fundamental commitment\" not develop 核武器 weapons. 伊朗 表示 美国 should refrain \"excessive demands\".",
+      "title": "伊朗-美国 peace talks fail reach deal 作为 Washington issues 'final offer'",
       "summary": "",
       "source": "BBC",
-      "timestamp": "2026-04-12 02:15:54",
+      "timestamp": "2026-04-12 06:16:49",
       "link": "https://www.bbc.com/news/world",
-      "engagement": 430
+      "engagement": 919
+    },
+    {
+      "title": "伊朗 must not charge tolls Strait of Hormuz, UN maritime chief 表示",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-04-12 05:16:34",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 903
     }
   ],
   "美国": [
+    {
+      "title": "Prosecutor probes abuse claims 反对 California governor candidate Swalwell",
+      "summary": "",
+      "source": "BBC",
+      "timestamp": "2026-04-12 06:16:49",
+      "link": "https://www.bbc.com/news/world",
+      "engagement": 1873
+    },
     {
       "title": "Why this disillusioned Trump voter spends hours searching Epstein files",
       "summary": "",
@@ -43,36 +59,28 @@
       "engagement": 1383
     },
     {
+      "title": "Many who support 总统 expressed frustration how Trump's former attorney general Pam Bondi handled Epstein files.",
+      "summary": "",
+      "source": "BBC",
+      "timestamp": "2026-04-12 08:16:34",
+      "link": "https://www.bbc.com/news/world",
+      "engagement": 1258
+    },
+    {
+      "title": "Prosecutor probes abuse claims 反对 California gov",
+      "summary": "",
+      "source": "BBC",
+      "timestamp": "2026-04-12 08:16:34",
+      "link": "https://www.bbc.com/news/world",
+      "engagement": 1228
+    },
+    {
       "title": "festival California also forced cancel set DJ Anyma Friday because of strong winds.",
       "summary": "",
       "source": "BBC",
       "timestamp": "2026-04-12 02:15:54",
       "link": "https://www.bbc.com/news/world",
       "engagement": 1194
-    },
-    {
-      "title": "Prosecutor probes abuse claims 反对 C",
-      "summary": "",
-      "source": "BBC",
-      "timestamp": "2026-04-12 02:15:54",
-      "link": "https://www.bbc.com/news/world",
-      "engagement": 1073
-    },
-    {
-      "title": "美国 和 伊朗 fail reach agreement after historic peace talks Pakistan, Vance 表示",
-      "summary": "",
-      "source": "BBC",
-      "timestamp": "2026-04-12 02:15:54",
-      "link": "https://www.bbc.com/news/world",
-      "engagement": 1028
-    },
-    {
-      "title": "Pakistan sends fighter jets Saudi Arabia amid fragile 美国-伊朗 停火",
-      "summary": "",
-      "source": "Al Jazeera",
-      "timestamp": "2026-04-12 03:16:25",
-      "link": "https://www.aljazeera.com/news",
-      "engagement": 852
     }
   ],
   "其他": [
@@ -83,6 +91,14 @@
       "timestamp": "2026-04-12 03:16:25",
       "link": "https://www.aljazeera.com/news",
       "engagement": 1384
+    },
+    {
+      "title": "Hungarians vote whether end 16 years of Orbán rule 和 elect rival",
+      "summary": "",
+      "source": "BBC",
+      "timestamp": "2026-04-12 08:16:34",
+      "link": "https://www.bbc.com/news/world",
+      "engagement": 1381
     },
     {
       "title": "Pope Leo urges world leaders reject 战争 和 negotiate peace",
@@ -107,17 +123,17 @@
       "timestamp": "2026-04-12 02:15:54",
       "link": "https://www.bbc.com/news/world",
       "engagement": 1237
-    },
-    {
-      "title": "Yamal scores 和 sets up two Ferran 作为 Barcelona cash Madrid loss",
-      "summary": "",
-      "source": "Al Jazeera",
-      "timestamp": "2026-04-12 03:16:25",
-      "link": "https://www.aljazeera.com/news",
-      "engagement": 1193
     }
   ],
   "以色列": [
+    {
+      "title": "以色列在加沙发动空袭 火箭弹袭击后",
+      "summary": "以色列 军事 执行 空袭 加沙 连夜 在...之后 火箭弹 袭击 巴勒斯坦武装分子. 这次交火标志着又一次升级 长期冲突.",
+      "source": "BBC",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/",
+      "engagement": 1060
+    },
     {
       "title": "以色列 strikes kill least 18 people across 南部 Lebanon",
       "summary": "",
@@ -125,6 +141,78 @@
       "timestamp": "2026-04-12 03:16:25",
       "link": "https://www.aljazeera.com/news",
       "engagement": 934
+    }
+  ],
+  "乌克兰": [
+    {
+      "title": "'We need real peace': Easter truce fails lift grim mood 战争-torn 乌克兰",
+      "summary": "",
+      "source": "BBC",
+      "timestamp": "2026-04-12 06:16:49",
+      "link": "https://www.bbc.com/news/world",
+      "engagement": 1106
+    },
+    {
+      "title": "乌克兰称俄罗斯军队在东部前线推进",
+      "summary": "乌克兰 军事官员报道 俄罗斯持续推进 东部顿巴斯地区, 激战 阿夫季夫卡 和 巴赫穆特. 局势仍然紧张 作为 双方继续部署军队.",
+      "source": "Reuters",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.reuters.com/world/europe/ukraine-says-russian-forces-advance-eastern-front-2026-03-16/",
+      "engagement": 806
+    },
+    {
+      "title": "北约盟国讨论增加支持 乌克兰",
+      "summary": "北约 国防部长开会 讨论增加军事支持 乌克兰 在持续冲突中 俄罗斯. 宣布了新的援助计划.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/",
+      "engagement": 310
+    }
+  ],
+  "俄罗斯": [
+    {
+      "title": "乌克兰称俄罗斯军队在东部前线推进",
+      "summary": "乌克兰 军事官员报道 俄罗斯持续推进 东部顿巴斯地区, 激战 阿夫季夫卡 和 巴赫穆特. 局势仍然紧张 作为 双方继续部署军队.",
+      "source": "Reuters",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.reuters.com/world/europe/ukraine-says-russian-forces-advance-eastern-front-2026-03-16/",
+      "engagement": 806
+    },
+    {
+      "title": "俄罗斯军方宣布新攻势 顿巴斯",
+      "summary": "俄罗斯 军事 官员 宣布 新 攻势 行动 顿巴斯 地区. 乌克兰军队正在准备 防御阵地.",
+      "source": "Reuters",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/",
+      "engagement": 474
+    },
+    {
+      "title": "北约盟国讨论增加支持 乌克兰",
+      "summary": "北约 国防部长开会 讨论增加军事支持 乌克兰 在持续冲突中 俄罗斯. 宣布了新的援助计划.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/",
+      "engagement": 310
+    }
+  ],
+  "哈马斯": [
+    {
+      "title": "以色列在加沙发动空袭 火箭弹袭击后",
+      "summary": "以色列 军事 执行 空袭 加沙 连夜 在...之后 火箭弹 袭击 巴勒斯坦武装分子. 这次交火标志着又一次升级 长期冲突.",
+      "source": "BBC",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/",
+      "engagement": 1060
+    }
+  ],
+  "欧洲": [
+    {
+      "title": "北约盟国讨论增加支持 乌克兰",
+      "summary": "北约 国防部长开会 讨论增加军事支持 乌克兰 在持续冲突中 俄罗斯. 宣布了新的援助计划.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-04-12 09:17:31",
+      "link": "https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/",
+      "engagement": 310
     }
   ]
 }
