@@ -1,0 +1,186 @@
+{
+  "乌克兰": [
+    {
+      "title": "UK 军队 seize suspected 俄罗斯 oil tanker accused of funding 乌克兰 战争",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 821
+    },
+    {
+      "title": "乌克兰称俄罗斯军队在东部前线推进",
+      "summary": "乌克兰 军事官员报道 俄罗斯持续推进 东部顿巴斯地区, 激战 阿夫季夫卡 和 巴赫穆特. 局势仍然紧张 作为 双方继续部署军队.",
+      "source": "Reuters",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.reuters.com/world/europe/ukraine-says-russian-forces-advance-eastern-front-2026-03-16/",
+      "engagement": 291
+    },
+    {
+      "title": "北约盟国讨论增加支持 乌克兰",
+      "summary": "北约 国防部长开会 讨论增加军事支持 乌克兰 在持续冲突中 俄罗斯. 宣布了新的援助计划.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/",
+      "engagement": 138
+    }
+  ],
+  "俄罗斯": [
+    {
+      "title": "UK 军队 seize suspected 俄罗斯 oil tanker accused of funding 乌克兰 战争",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 821
+    },
+    {
+      "title": "俄罗斯军方宣布新攻势 顿巴斯",
+      "summary": "俄罗斯 军事 官员 宣布 新 攻势 行动 顿巴斯 地区. 乌克兰军队正在准备 防御阵地.",
+      "source": "Reuters",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.reuters.com/world/europe/russia-donbas-offensive-2026-03-16/",
+      "engagement": 335
+    },
+    {
+      "title": "乌克兰称俄罗斯军队在东部前线推进",
+      "summary": "乌克兰 军事官员报道 俄罗斯持续推进 东部顿巴斯地区, 激战 阿夫季夫卡 和 巴赫穆特. 局势仍然紧张 作为 双方继续部署军队.",
+      "source": "Reuters",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.reuters.com/world/europe/ukraine-says-russian-forces-advance-eastern-front-2026-03-16/",
+      "engagement": 291
+    },
+    {
+      "title": "北约盟国讨论增加支持 乌克兰",
+      "summary": "北约 国防部长开会 讨论增加军事支持 乌克兰 在持续冲突中 俄罗斯. 宣布了新的援助计划.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/",
+      "engagement": 138
+    }
+  ],
+  "美国": [
+    {
+      "title": "美国 asks Anthropic block global access top AI models: Why it matters",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 831
+    },
+    {
+      "title": "UK 军队 seize suspected 俄罗斯 oil tanker accused of funding 乌克兰 战争",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 821
+    },
+    {
+      "title": "Trump condemns 以色列’s 攻击 Beirut, 表示 伊朗 deal still close",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 777
+    },
+    {
+      "title": "美国就核计划警告伊朗 escalation",
+      "summary": "美国 warned 伊朗 反对 进一步 escalation 核武器 program, 表示 所有选项都在考虑范围内. 国际谈判已达成 关键点.",
+      "source": "CNN",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.cnn.com/world/iran-us-nuclear-2026-03-16/",
+      "engagement": 637
+    },
+    {
+      "title": "Trump makes endorsement key Georgia Republican 美国 Senate run-off",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 520
+    }
+  ],
+  "以色列": [
+    {
+      "title": "Trump condemns 以色列’s 攻击 Beirut, 表示 伊朗 deal still close",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 777
+    },
+    {
+      "title": "以色列在加沙发动空袭 火箭弹袭击后",
+      "summary": "以色列 军事 执行 空袭 加沙 连夜 在...之后 火箭弹 袭击 巴勒斯坦武装分子. 这次交火标志着又一次升级 长期冲突.",
+      "source": "BBC",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/",
+      "engagement": 582
+    },
+    {
+      "title": "‘Unacceptable’: London protesters slam illegal 以色列 settlement land sale",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 408
+    }
+  ],
+  "哈马斯": [
+    {
+      "title": "以色列在加沙发动空袭 火箭弹袭击后",
+      "summary": "以色列 军事 执行 空袭 加沙 连夜 在...之后 火箭弹 袭击 巴勒斯坦武装分子. 这次交火标志着又一次升级 长期冲突.",
+      "source": "BBC",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.bbc.com/news/middle-east/israel-gaza-strikes-2026-03-16/",
+      "engagement": 582
+    }
+  ],
+  "伊朗": [
+    {
+      "title": "Trump condemns 以色列’s 攻击 Beirut, 表示 伊朗 deal still close",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 777
+    },
+    {
+      "title": "美国就核计划警告伊朗 escalation",
+      "summary": "美国 warned 伊朗 反对 进一步 escalation 核武器 program, 表示 所有选项都在考虑范围内. 国际谈判已达成 关键点.",
+      "source": "CNN",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.cnn.com/world/iran-us-nuclear-2026-03-16/",
+      "engagement": 637
+    }
+  ],
+  "欧洲": [
+    {
+      "title": "北约盟国讨论增加支持 乌克兰",
+      "summary": "北约 国防部长开会 讨论增加军事支持 乌克兰 在持续冲突中 俄罗斯. 宣布了新的援助计划.",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 00:34:15",
+      "link": "https://www.aljazeera.com/news/nato-ukraine-support-2026-03-16/",
+      "engagement": 138
+    }
+  ],
+  "其他": [
+    {
+      "title": "‘We herded like animals’: Freed Boko Haram captivity",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 1141
+    },
+    {
+      "title": "Netherlands vs Japan live: World Cup 2026",
+      "summary": "",
+      "source": "Al Jazeera",
+      "timestamp": "2026-06-14 17:36:27",
+      "link": "https://www.aljazeera.com/news",
+      "engagement": 399
+    }
+  ]
+}
